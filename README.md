@@ -9,12 +9,13 @@ Public operating skills for Burrow and its integrations, updated independently o
 ## Available
 
 - `burrow-runtime/SKILL.md`: native runtime, tools, continuity, delegation, skills, and verification.
-
-Backdoor and Node Goblin skills are not included yet. Add them when their operating instructions have been reviewed against their implementations.
+- `goblin-secret-store/SKILL.md`: safe credential discovery and protected-reference use through Goblin Secret Store.
+- `burrow-backdoor/SKILL.md`: evidence-driven, read-only Burrow diagnostics through Backdoor.
+- `node-goblin-operations/SKILL.md`: pairing, health, updates, recovery, and remote-execution boundaries for Node Goblin.
 
 ## Install and update
 
-In **Settings → Skills**, import repository `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`, ref `main`, path `burrow-runtime/SKILL.md`. Preview, inspect, then install and enable automatic synchronization with your preferred schedule. Tags and commits pin content instead of following updates.
+In **Settings → Skills**, import repository `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`, ref `main`, and the path to the wanted skill, such as `goblin-secret-store/SKILL.md`. Preview, inspect, then install and enable automatic synchronization with your preferred schedule. Tags and commits pin content instead of following updates.
 
 Import never overwrites an existing ID. For an existing bundled `burrow-runtime`, configure its Git source instead. Synchronization preserves assignments; bundled startup publication defers to a configured Git source.
 
