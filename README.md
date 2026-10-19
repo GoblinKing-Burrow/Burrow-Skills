@@ -17,6 +17,8 @@ Public operating skills for Burrow and its integrations, updated independently o
 
 In **Settings → Skills**, import repository `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`, ref `main`, and the path to the wanted skill, such as `goblin-secret-store/SKILL.md`. Preview, inspect, then install and enable automatic synchronization with your preferred schedule. Tags and commits pin content instead of following updates.
 
+For development testing, use `https://github.com/NightShaman/Burrow-Skills.git` at `main` or pin the exact NightShaman commit. Skills are source artifacts, so no package build is required; a verified `main` push is immediately importable. Complete public promotion still runs at the daily release boundary.
+
 Import never overwrites an existing ID. For an existing bundled `burrow-runtime`, configure its Git source instead. Synchronization preserves assignments; bundled startup publication defers to a configured Git source.
 
 Text-only skills use PostgreSQL. Select a directory for skills with artifacts so supporting files stay together in runtime filesystem storage. Import and sync do not execute scripts.
