@@ -7,6 +7,8 @@ description: "Operate and troubleshoot Node Goblin controller and execution host
 
 Node Goblin connects Burrow agents to remote execution hosts. The controller mod runs inside Burrow; Mini Node Goblin runs as a systemd service on each Linux execution host.
 
+For home-Burrow diagnostics and authorized mod administration while execution is remote, use the Backdoor companion in the home runtime when available. Remote shell access does not move Burrow Core onto that execution host.
+
 Treat these as separate layers. A running service does not prove controller reachability, pairing approval, agent assignment, workspace access, or successful command execution.
 
 ## Inspect before changing

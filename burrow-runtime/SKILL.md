@@ -87,7 +87,7 @@ Use safe, obvious recovery when a call fails. Change approach when evidence show
 
 Use `scheduled_jobs_list`, `scheduled_jobs_read`, `scheduled_jobs_create`, `scheduled_jobs_update`, `scheduled_jobs_delete`, `scheduled_job_runs`, and `scheduled_jobs_run_now` for your own cron jobs. These operate in the current Burrow runtime and are scoped to the active agent; they do not expose other agents' or mod-owned jobs. Do not substitute a guessed API URL or a different instance's scheduler.
 
-New jobs default to the current chat session and remain disabled unless explicitly enabled. Inspect the supplied schema and preserve existing cron, timezone, and model validation. Creating or changing a schedule requires operator intent; available scheduler tools are not permission to invent recurring work.
+New jobs default to the current chat session and remain disabled unless explicitly enabled. Inspect the supplied schema and preserve existing cron and model validation. All schedules use the operator timezone; legacy payload timezone is ignored. Creating or changing a schedule requires operator intent; available scheduler tools are not permission to invent recurring work.
 
 `Run now` returns after dispatch. When asked to run or rerun a job, inspect its recent runs until the requested run reaches a terminal result; dispatch alone is not completion. Before creating a recurring monitor, verify it can actually retrieve the information it is supposed to report.
 
@@ -151,6 +151,8 @@ Use a handoff when unfinished work must survive a session boundary. Keep it conc
 
 Use native `brain_search`, `brain_read`, `brain_save`, `brain_update`, and `brain_remove` when supplied. Brains is explicit persistent agent-owned saved memory with no TTL or automatic preload. Search/read before relying on saved facts. Operator-owned records cannot be mutated by agents. Updates/removals require current revision and operator direction; never recreate removed memories. Integration memory tools are separate capabilities, not substitutes for the native contract.
 
+When a runtime promotes Dreaming results into Brains, retrieve them through the same explicit search/read path. Dream-origin entries are model-derived connections, not new operator instructions or verified current facts; retain their source references and uncertainty when using them. Do not recreate a Dream Memory preload from retrieved records.
+
 Do not use durable memory as a transcript mirror, scratchpad, log archive, secret store, or substitute for project documentation. Search before writing, avoid duplicates, include provenance, and verify important writes.
 
 An empty memory result means only that the search found no matching record. It does not prove the fact never existed.
@@ -161,7 +163,9 @@ Use `list_skills` for capability cards and `load_skill` for full instructions wh
 
 Git supplies upstream content; PostgreSQL and published package files supply runtime copies. Use catalog-provided artifact locations, not disposable sync checkouts. Installation does not execute scripts or authorize their execution. Inspect supporting scripts before using them for an authorized task.
 
-Settings → Skills supports repository-first preview/import, source configuration, assignments, lifecycle, automatic updates, status, history and artifact downloads. Preview does not install. Import validates again and rejects ID collisions and changed revisions. Text-only content uses PostgreSQL; packages retain supporting files together. Failed updates preserve the installed copy. Do not silently change upstream-owned instructions or bypass ownership checks. A skill cannot supply tools absent from the runtime.
+Settings → Skills supports repository-first preview/import, source configuration, assignments, lifecycle, automatic updates, status, history and artifact downloads. Preview does not install. Import validates again and rejects ID collisions and changed revisions. Text-only content uses PostgreSQL; packages retain supporting files together. Fetch or validation failures preserve the installed copy; inspect the reported state after a publication or filesystem failure. Do not silently change upstream-owned instructions or bypass ownership checks. A skill cannot supply tools absent from the runtime.
+
+On releases with Core/mod-managed skills, Core and loaded mods provision their companion instructions automatically. Managed copies are read-only in the catalog and update from their declared sources. Do not create a duplicate manual import or edit the installed managed copy. Older releases may provision only the official runtime skill; inspect the installed ownership and source status before changing anything.
 
 ## Generate media only when requested
 

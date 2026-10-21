@@ -8,14 +8,14 @@ The public source is:
 https://github.com/GoblinKing-Burrow/Burrow-Skills.git
 ```
 
-The links below open the actual reviewed instructions, pinned to the revision used for this guide. Browse the repository’s `main` branch separately to inspect newer changes. The paths also work for optional manual imports on runtimes that need them.
+The links below open the current public instruction files. Review their Git history and your installed skill version when comparing changes; these live links can advance after this guide is written. The paths also work for optional manual imports on runtimes that need them.
 
 | Skill | Import path | What it teaches |
 | --- | --- | --- |
-| Burrow runtime | [burrow-runtime/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/burrow-runtime/SKILL.md) | Conversation, workspace context, tool discovery, memory, delegation, skills, and evidence-based verification |
-| Goblin Secret Store | [goblin-secret-store/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/goblin-secret-store/SKILL.md) | Discovering assigned credentials and using protected references without exposing values |
-| Burrow Backdoor | [burrow-backdoor/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/burrow-backdoor/SKILL.md) | Focused, evidence-driven diagnostics and handling sensitive diagnostic output |
-| Node Goblin operations | [node-goblin-operations/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/node-goblin-operations/SKILL.md) | Separating service health, pairing, connectivity, assignment, and verified remote execution |
+| Burrow runtime | [burrow-runtime/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/burrow-runtime/SKILL.md) | Conversation, workspace context, tool discovery, memory, delegation, skills, and evidence-based verification |
+| Goblin Secret Store | [goblin-secret-store/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/goblin-secret-store/SKILL.md) | Discovering assigned credentials and using protected references without exposing values |
+| Burrow Backdoor | [burrow-backdoor/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/burrow-backdoor/SKILL.md) | Home-Burrow diagnostics, scoped mod administration, and durable operation verification |
+| Node Goblin operations | [node-goblin-operations/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/node-goblin-operations/SKILL.md) | Separating service health, pairing, connectivity, assignment, and verified remote execution |
 
 ## Start with the integration you actually use
 
@@ -25,7 +25,7 @@ The current public runtime already provisions `burrow-runtime` and adopts its au
 
 ## Check compatibility before assignment
 
-The current Backdoor skill is a **diagnostic companion**. Some of its deployment language describes the earlier read-only MCP service. Newer Backdoor releases also provide in-process mod administration. Do not use the skill as the installation or administration reference for those releases: follow the [current Backdoor guide](https://burrow-docs.blissful-psychosis.com/burrow-backdoor/) and discover the installed tool schemas.
+The Backdoor skill covers the current system mod’s diagnostics and mod-administration tools, with compatibility guidance for older diagnostic-only deployments. Administrative access is separate from global diagnostics. Follow the [current Backdoor guide](https://burrow-docs.blissful-psychosis.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update.
 
 Likewise, a tool name in any skill is not proof that your installed version exposes it. Review instructions alongside the version of the application or mod you run. Skills can change independently of those applications.
 
