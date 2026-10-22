@@ -1,5 +1,6 @@
 ---
 name: burrow-backdoor
+version: 2026.10.19.1
 description: "Inspect the agent's home Burrow and carry out authorized mod lifecycle operations through Backdoor's Core-hosted tools."
 ---
 

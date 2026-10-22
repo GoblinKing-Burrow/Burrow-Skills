@@ -1,5 +1,6 @@
 ---
 name: goblin-secret-store
+version: 2026.10.19.1
 description: "Safely discover and use credentials assigned through Goblin Secret Store without exposing protected values."
 ---
 
