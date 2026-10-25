@@ -1,6 +1,6 @@
 # Explore the public skill library
 
-Read the public instruction files before trusting or using them. The runtime skill is provisioned automatically in the current public runtime; the forthcoming managed system also supplies the loaded mods’ companions. See [managed skills and release coverage](managed-skills.md).
+Read the public instruction files before trusting or using them. The runtime skill is provisioned automatically; current Core's managed system also supplies the loaded mods’ declared companions. See [managed skills and release coverage](managed-skills.md).
 
 The public source is:
 
@@ -19,9 +19,9 @@ The links below open the current public instruction files. Review their Git hist
 
 ## Start with the integration you actually use
 
-For GSS, review its credential-handling instructions and configure the mod and record access. For Node Goblin, the operations skill provides a troubleshooting sequence; making it available does not pair or approve a host. In the forthcoming managed system, these companions come from loaded mods automatically.
+For GSS, review its credential-handling instructions and configure the mod and record access. For Node Goblin, the operations skill provides a troubleshooting sequence; making it available does not pair or approve a host. In the current managed system, these companions come from loaded mods automatically.
 
-The current public runtime already provisions `burrow-runtime` and adopts its automatic official Git source by default. Check the installed source before changing anything; manual source setup is only needed when that default does not apply.
+The historical 2026.10.19 runtime already provisions `burrow-runtime` and adopts its automatic official Git source by default. Check the installed source before changing anything; manual source setup is only needed when that default does not apply.
 
 ## Check compatibility before assignment
 

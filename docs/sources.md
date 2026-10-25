@@ -1,13 +1,15 @@
 # Source and coverage
 
-The public-release sections were checked on **21 October 2026** against:
+The historical public-release sections were checked on **21 October 2026** against:
 
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
 ## Release boundary
 
-The public runtime identifies its release as **2026.10.19**. It includes automatic adoption of the official runtime skill, but not the newer dedicated Core/mod-managed catalog. The separately labeled **forthcoming managed-skills system** describes implementation reviewed on 21 October 2026; no public release version is claimed for it here. Confirm your installed runtime and mod support before expecting that behavior.
+The historical public snapshot identifies itself as **2026.10.19**. It includes automatic adoption of the runtime skill, but not the dedicated Core/mod-managed catalog. Current implementation was rechecked **25 October 2026** against Core `3bf50374d3601c821e787912d52b9044eaf649ec`, UI `0610bac85b2e636b79bbdf09fc3a95c3a519fa5a`, and skill-library `b81616ef9c8168d7fe9dcc8bd8e244149401fcc7`.
+
+The managed catalog is implemented: `managed-skills.mjs` reconciles Core plus loaded-mod declarations, records revision/content metadata and removes no-longer-desired managed copies after successful reconciliation. The current UI displays managed skill versions in mod inventory. This is a source review, not a live fetch test or a claim that an installed older runtime has upgraded. The public links below remain historical evidence rather than current-HEAD claims.
 
 ## Implementation map
 

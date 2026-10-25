@@ -39,6 +39,6 @@ Use skills for reusable task procedures. Use agent profile documents for agent-s
 
 ## Advanced: a different skill with the same ID
 
-For ordinary, non-managed IDs, Burrow also discovers filesystem skills. An agent-owned filesystem skill shadows a shared filesystem skill with the same ID, and shared filesystem entries shadow assigned database-backed entries. If an agent loads unexpected text, inspect its effective catalog and source location rather than repeatedly reassigning the library entry. Give unrelated skills distinct IDs. In the forthcoming managed system, managed IDs take precedence over all of these ordinary entries.
+For ordinary, non-managed IDs, Burrow also discovers filesystem skills. An agent-owned filesystem skill shadows a shared filesystem skill with the same ID, and shared filesystem entries shadow assigned database-backed entries. If an agent loads unexpected text, inspect its effective catalog and source location rather than repeatedly reassigning the library entry. Give unrelated skills distinct IDs. In the current managed system, managed IDs take precedence over all of these ordinary entries.
 
 See [source coverage](sources.md) for the catalog and explicit-loading implementation.

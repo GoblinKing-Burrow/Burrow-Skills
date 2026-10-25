@@ -1,8 +1,8 @@
 # How managed skills work
 
-Burrow's own operating guidance should be available without making you copy and maintain it by hand. There are two release paths to distinguish.
+Burrow's own operating guidance should be available without making you copy and maintain it by hand. Current Core provides the managed catalog below; the older adoption path is retained for compatibility.
 
-## Current public runtime: 2026.10.19
+## Historical runtime: 2026.10.19
 
 The public runtime at the [verified revision](sources.md) automatically provisions `burrow-runtime`. On first adoption, it creates the bundled fallback as a global skill and connects the official public Git source with automatic sync enabled, using `0 */6 * * *` in the operator timezone.
 
@@ -10,9 +10,9 @@ This is not a requirement to import `burrow-runtime` manually. Look at what is a
 
 Bundled and Git-managed instruction text is read-only in the operator editor. Availability and assignments are separate controls. The [optional source-management guide](updates.md) describes this public runtime's library controls.
 
-## Forthcoming: Core and mod-managed skills
+## Current implementation: Core and mod-managed skills
 
-The forthcoming managed-skills implementation adds a dedicated managed catalog. This behavior is **not in the public runtime revision above**; use this section for runtime versions that provide the managed-skills system.
+The dedicated managed catalog is implemented in current Core, rechecked **25 October 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.

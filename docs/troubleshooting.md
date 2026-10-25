@@ -2,7 +2,7 @@
 
 ## An automatic companion is missing
 
-First check [release coverage](managed-skills.md). The current public runtime does not include the forthcoming mod-managed catalog. In a runtime with that support, verify the relevant mod actually loaded, declares its companion, and the managed refresh succeeded. A failed first fetch can leave the companion pending; an existing copy can remain older after a fetch failure. Do not use an import under the same ID as a supposed override.
+First check [release coverage](managed-skills.md). The historical 2026.10.19 snapshot lacks the dedicated mod-managed catalog; current Core implements it. On a compatible installed runtime, verify the relevant mod actually loaded, declares its companion, and the managed refresh succeeded. A failed first fetch can leave the companion pending; an existing copy can remain older after a fetch failure. Do not use an import under the same ID as a supposed override.
 
 ## The agent cannot see an optional skill
 

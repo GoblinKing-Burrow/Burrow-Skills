@@ -23,7 +23,7 @@ Disabling automatic sync keeps the installed content. It does not remove the sou
 
 ## Connect the existing runtime skill
 
-The current public release normally connects this source automatically. These steps are only for an existing library entry without that source, before the forthcoming managed system applies:
+The historical 2026.10.19 runtime normally connects this source automatically. These steps are only for an existing non-managed library entry without that source; they do not replace current Core's dedicated managed catalog:
 
 1. Select that entry rather than importing a duplicate.
 2. Set its repository to `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`, ref to `main` (or an exact commit), and path to `burrow-runtime/SKILL.md`.
