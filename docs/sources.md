@@ -5,6 +5,18 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Instruction maintenance baseline — 30 October 2026
+
+The first explicit nightly skill-text inventory found four instruction payloads in the skill library and two additional copies of the runtime skill in Core and the assembled Burrow source. The other documented component/mod repositories contain no `SKILL.md` payloads at the inspected heads. The inventory records file hashes separately from package versions; no application or skill version was bumped for documentation maintenance.
+
+Current source pins are skill library `9bb95549b00429f99ccdaf30c804134ee4418738`, Core `bea2171508d1821440ed5c554a688768848699c9`, assembly `23bf37de7a7353732005123c3c44b7f2822463bb`, Backdoor `a8c40cd0210be6c5db734a0b5af9c0d39700d182`, Node Goblin `1fa350d02469f3b9ab126afe3d1bb1606cde0599`, and GSS `58290bcf92459f6e215e19fe9dad954aad712a63`.
+
+Backdoor's existing instruction text already describes the 35-tool implementation, independent full-API grant, arguments, full response formats, native A2A separation and durable lifecycle preference. Its library summary and managed-import guidance were stale and are corrected. Runtime instructions now explain the implemented minion-depth boundary and A2A reply-cycle response; all three runtime copies remain aligned. GSS and Node Goblin instructions retain their current text after basic schema/CLI checks. Validation checks instruction frontmatter, references and source names without executing skills or contacting external chat services. This ordinary pass does not claim a full runtime test or exhaustive review of unchanged source.
+
+## Native A2A instruction delta — 29 October 2026
+
+Skill-library commit `c56400e5ccbf2af74e94e52ec9b08fb4a48fab76` updates runtime and Backdoor instructions to prefer native peer messaging and discovery, without diagnostic prerequisites. This ordinary delta review does not re-certify unchanged instructions or prove availability on an older installed runtime. No application tests or live messages were run.
+
 ## Release boundary
 
 The historical public snapshot identifies itself as **2026.10.19**. It includes automatic adoption of the runtime skill, but not the dedicated Core/mod-managed catalog. Current implementation was rechecked **25 October 2026** against Core `3bf50374d3601c821e787912d52b9044eaf649ec`, UI `0610bac85b2e636b79bbdf09fc3a95c3a519fa5a`, and skill-library `b81616ef9c8168d7fe9dcc8bd8e244149401fcc7`.

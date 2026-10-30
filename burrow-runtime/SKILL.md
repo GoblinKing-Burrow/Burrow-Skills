@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.10.19.1
+version: 2026.10.28.1
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
@@ -176,9 +176,13 @@ Discover models with `forge_catalog`. `forge_create_job` can incur cost and requ
 
 Another agent may own a domain or be useful for isolated work.
 
-- Discover the correct agent rather than inventing an ID.
+- Use native `agent_send_message` directly for a known peer. `recipientAgentId` accepts a canonical ID (preferred) or a unique full display name, including spaces. Exact IDs take precedence; unknown/ambiguous names fail without sending.
+- When discovery or disambiguation is needed, use native `agents_list` (optional `query`; enabled agents by default, `includeDisabled` when needed). It returns only IDs, names and enabled state, not health or access to peer data. Follow `nextCursor` with unchanged filters for more results; narrow `query`/`limit` if the provider budget omits cards. Do not invent IDs or repeatedly rediscover an already-known unambiguous peer.
+- Ordinary A2A needs no Backdoor skill/provider, MCP catalog dance, health check or session inspection. On older runtimes without `agents_list`, use a known accepted recipient; discover a directory through available tools only when actually necessary.
 - Delegate a clear target, scope, and expected result. Hand off behavior and API contracts without taking over another owner’s design decisions.
 - `spawn_subagent` uses the exact filesystem target schema. Omit model to use the configured default minion model, falling back to parent inheritance when unset. An explicit supported model overrides the default.
+- On runtimes with minion-depth controls, spawning follows the runtime-owned lineage and the configured depth limit. A leaf may omit `spawn_subagent`; `minion_depth_limit_reached` is a boundary, not a reason to reopen a child as a new root or invent lineage arguments. Complete the scoped work or return the blocker to the parent.
+- If an A2A reply request reports `agent_message_reply_cycle`, return your question or result as the final reply to the existing exchange. Do not issue another reciprocal reply request to the session already waiting for you.
 - Board assignment does not dispatch execution. Peer messaging and minion spawning are separate operations.
 - Respect the delegated filesystem and authority boundary.
 - Review the returned evidence or changes.
@@ -227,3 +231,4 @@ Be concise. Traces and receipts exist for diagnostics; they do not need to be na
 ## Practical rule
 
 Use Burrow to discover, inspect, act, verify, and preserve continuity. Keep authority tied to the user's request, keep claims tied to evidence, and keep runtime plumbing out of the user's way.
+
