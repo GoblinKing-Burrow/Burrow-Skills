@@ -4,6 +4,12 @@
 
 First check [release coverage](managed-skills.md). The historical 2026.10.19 snapshot lacks the dedicated mod-managed catalog; current Core implements it. On a compatible installed runtime, verify the relevant mod actually loaded, declares its companion, and the managed refresh succeeded. A failed first fetch can leave the companion pending; an existing copy can remain older after a fetch failure. Do not use an import under the same ID as a supposed override.
 
+## The managed version looks old
+
+Check the [managed version and freshness rules](managed-skills.md#versions-and-freshness). The displayed Managed skill value comes from installed frontmatter, not the latest upstream release or a last-check clock. Compare revision/content metadata and producer logs. A Development app still follows the repository declared by Core or the mod; official declarations currently use Public skill content.
+
+Inspect `effectiveSkills` rather than concluding that an empty ordinary library or assignment list means the operating skill is absent. Do not use the ordinary **Sync now** button, import a duplicate or detach a library source to repair this separate managed root. A failed managed fetch retains the working set until a successful reconciliation; the default periodic interval is six hours.
+
 ## The agent cannot see an optional skill
 
 Check the exact agent, installed ID, assignment, global flag, lifecycle, and library filters. Disabled entries are unavailable. A skill installed without global assignment still needs an individual assignment. Ask the agent to list its current skills before assuming it has loaded one.
@@ -24,7 +30,7 @@ Do not put credentials in the repository URL. Private HTTPS login is not configu
 
 ## The ID already exists
 
-Burrow deliberately refuses to overwrite it during import. Select the existing skill to manage its source, or choose a distinct ID for a separate skill. For bundled `burrow-runtime`, use [Connect the existing runtime skill](updates.md#connect-the-existing-runtime-skill).
+Burrow deliberately refuses to overwrite it during import. Select the existing skill to manage its source, or choose a distinct ID for a separate skill. For a current managed ID such as `burrow-runtime`, inspect the managed catalog instead of connecting a library source. Only older runtimes without that catalog use the [historical library compatibility steps](updates.md#connect-the-existing-runtime-skill).
 
 ## The repository changed after preview
 
@@ -44,6 +50,7 @@ A recorded sync failure retains the previous installed content. Check repository
 
 Bundled and Git-managed content is upstream-controlled. Change lifecycle or assignments in Burrow, edit the maintained source, or create a separate text skill. Text-only Git sources can be removed while keeping the text. Packages with companion files cannot be detached through this control; turn off automatic sync if you only need to freeze updates.
 
-## An update did not change behavior
+## An optional-library update did not change behavior
 
-Confirm you clicked **Sync now** after saving the source and that the update succeeded. Check whether the ref is pinned and whether an overriding filesystem skill exists. Then verify the agent loads the intended skill on the relevant turn. Assignment alone does not guarantee use, and an already loaded instruction is not a live subscription to upstream text.
+For managed operating skills, use the separate checks above. For an ordinary library source, confirm you clicked **Sync now** after saving the source and that the update succeeded. Check whether the ref is pinned and whether an overriding filesystem skill exists. Then verify the agent loads the intended skill on the relevant turn. Assignment alone does not guarantee use, and an already loaded instruction is not a live subscription to upstream text.
+

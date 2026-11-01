@@ -25,9 +25,9 @@ Experimental and deprecated do not disable a skill. To stop offering it, use dis
 
 ## Ask for a small first use
 
-After assignment, try a bounded request such as:
+After assigning your own skill (for example the `service-check` example in [authoring](authoring.md)), try a bounded request such as:
 
-> List your available skills, load `goblin-secret-store`, and explain its credential-handling boundaries without retrieving a credential.
+> List your available skills, load `service-check`, and explain its inspection steps without changing a service.
 
 The agent can use `list_skills` to discover available entries and `load_skill` to read a selected ID. Assignment does not inject the full skill text into every prompt or guarantee use on a particular turn. The planner does not automatically select full skill bodies.
 

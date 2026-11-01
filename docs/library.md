@@ -8,9 +8,9 @@ The public source is:
 https://github.com/GoblinKing-Burrow/Burrow-Skills.git
 ```
 
-The links below open the current public instruction files. Review their Git history and your installed skill version when comparing changes; these live links can advance after this guide is written. The paths also work for optional manual imports on runtimes that need them.
+The links below open the current public instruction files. Review their Git history and your installed skill version when comparing changes; these live links can advance after this guide is written. These are source paths, not an instruction to import managed operating skills. Manual import applies only to older compatible runtimes lacking the automatic mechanism; check installed capabilities first.
 
-| Skill | Import path | What it teaches |
+| Skill | Source path | What it teaches |
 | --- | --- | --- |
 | Burrow runtime | [burrow-runtime/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/burrow-runtime/SKILL.md) | Conversation, workspace context, tool discovery, memory, delegation, skills, and evidence-based verification |
 | Goblin Secret Store | [goblin-secret-store/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/goblin-secret-store/SKILL.md) | Discovering assigned credentials and using protected references without exposing values |
@@ -21,7 +21,7 @@ The links below open the current public instruction files. Review their Git hist
 
 For GSS, review its credential-handling instructions and configure the mod and record access. For Node Goblin, the operations skill provides a troubleshooting sequence; making it available does not pair or approve a host. In the current managed system, these companions come from loaded mods automatically.
 
-The historical 2026.10.19 runtime already provisions `burrow-runtime` and adopts its automatic official Git source by default. Check the installed source before changing anything; manual source setup is only needed when that default does not apply.
+The historical 2026.10.19 runtime already provisions `burrow-runtime` and adopts its automatic official Git source by default. That historical library-source setup is not the current managed catalog. On current Core, inspect the managed metadata and effective catalog; connecting a legacy library source does not update the authoritative managed copy.
 
 ## Native peer messaging is separate from diagnostics
 
@@ -33,8 +33,8 @@ Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup
 
 ## Check compatibility before assignment
 
-The Backdoor skill covers the current system mod’s diagnostics, durable mod-administration tools and full local Core API requests, with compatibility guidance for older deployments. Administrative access is separate from global diagnostics. The full API tool additionally requires its independent `core-api-v1` capability grant; `mod-management-v1` alone does not authorize it. Full API responses are not sanitized diagnostic projections, and generic API requests do not inherit durable lifecycle receipts. Follow the [current Backdoor guide](https://burrow-docs.blissful-psychosis.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update.
+The Backdoor skill covers the current system mod’s diagnostics, durable mod-administration tools and full local Core API requests, with compatibility guidance for older deployments. Administrative access is separate from global diagnostics. The full API tool additionally requires its independent `core-api-v1` capability grant; `mod-management-v1` alone does not authorize it. Full API responses are not sanitized diagnostic projections, and generic API requests do not inherit durable lifecycle receipts. Follow the [current Backdoor guide](https://docs.goblin-kingdom.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update.
 
 Likewise, a tool name in any skill is not proof that your installed version exposes it. Review instructions alongside the version of the application or mod you run. Skills can change independently of those applications.
 
-[Install a skill](installation.md) · [Source revisions](sources.md)
+[Add an optional skill](installation.md) · [Source revisions](sources.md)

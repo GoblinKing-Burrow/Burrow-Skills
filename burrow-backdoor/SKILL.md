@@ -1,6 +1,6 @@
 ---
 name: burrow-backdoor
-version: 2026.10.31
+version: 2026.11.01
 description: "Inspect and administer the home Burrow, including full local API requests, through trusted Core-hosted Backdoor tools."
 ---
 

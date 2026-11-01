@@ -23,14 +23,14 @@ Disabling automatic sync keeps the installed content. It does not remove the sou
 
 ## Connect the existing runtime skill
 
-The historical 2026.10.19 runtime normally connects this source automatically. These steps are only for an existing non-managed library entry without that source; they do not replace current Core's dedicated managed catalog:
+The historical 2026.10.19 runtime normally connects this source automatically. These steps are only for an older runtime without the dedicated managed catalog and an existing library entry without that source. A legacy library copy can coexist with a current managed copy, but the managed ID wins: connecting or syncing that library source will not update the active operating skill. For current Core, use [managed freshness checks](managed-skills.md#versions-and-freshness), not the steps below:
 
 1. Select that entry rather than importing a duplicate.
 2. Set its repository to `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`, ref to `main` (or an exact commit), and path to `burrow-runtime/SKILL.md`.
 3. Click **Connect Git source**, then **Sync now**.
 4. Check the outcome and keep its intended assignments.
 
-Bundled startup publication defers to a configured Git source. This lets the public skill library supply updates without replacing the installed skill's identity.
+In that legacy library path, bundled startup publication defers to a configured Git source. This does not change current Core's independently reconciled managed root.
 
 ## Who controls the text?
 

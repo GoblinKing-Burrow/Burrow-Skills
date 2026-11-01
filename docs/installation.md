@@ -4,11 +4,11 @@ This page covers optional user-created or imported library skills. Core and mod-
 
 Open **Settings → Skills** in Burrow. Choose repository import when you want a maintained upstream source, or a text skill for instructions you control yourself.
 
-## Import from the public library
+## Import an optional repository skill
 
 1. Open **Import from repository**.
-2. Set **Repository** to `https://github.com/GoblinKing-Burrow/Burrow-Skills.git`.
-3. Set **Skill path** to the chosen path, for example `goblin-secret-store/SKILL.md`.
+2. Set **Repository** to the Git URL for the optional skill you want to maintain. The official operating skills already supplied by Core/mod declarations do not need this import.
+3. Set **Skill path** to the chosen repository-relative path, for example `my-skill/SKILL.md`.
 4. Expand **Ref & automatic updates**. Set **Ref** to `main`, or use a full commit ID for a fixed version. `HEAD` selects the repository default. Automatic sync is off initially.
 5. Click **Preview skill**. Read the actual instruction text, previewed revision, storage type, and **Included files**.
 6. Review **Install ID & availability**. Keep a meaningful unique ID, choose a lifecycle, and decide whether to **Assign globally**.
@@ -43,3 +43,4 @@ IDs use letters, digits, periods, underscores, or hyphens, start with a letter o
 The importer also accepts HTTPS, SSH, and absolute local Git repository paths. A local path is on the **Burrow runtime's filesystem**, not a file picker on your browser computer. Private HTTPS credentials are not configured in this form; do not embed passwords or tokens in repository URLs.
 
 Use repository-relative skill paths without leading slashes or `..`. Symlinks, submodules/gitlinks, and unmaterialized Git LFS pointers are rejected. See [troubleshooting](troubleshooting.md) for recovery.
+

@@ -5,6 +5,14 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 31 October 2026
+
+The six existing instruction payloads retain their previously reviewed bytes: four in the skill library and one bundled runtime copy each in Core and the assembly. No skill metadata/version was changed. Skill-library head `078031793d93118e463c0c780feefa3dd109e257` and Backdoor head `cfc215e7f71594a2f5d6f3d34e165ea37ebce113` are unchanged from the previous documentation receipts.
+
+This pass rechecked managed source selection, startup/lifecycle/periodic refresh, installed metadata, catalog ownership and explicit load semantics against Core `8275b6bedf1fcd969fb5289cf0b673a80ddc8146`. Assembly `203c3ed2d634680bb98a6e04bb75247cd9b3e2c2` contains the public skill version stamping and readiness validation described in [managed skills](managed-skills.md). These are current implementation pins, not proof of a public promotion or an installed instance's refresh.
+
+The guides now distinguish ordinary library controls from managed operating skills, explain the three Mods version values and revision/hash freshness checks, and avoid using a managed companion ID as the optional-import example. Native peer discovery and A2A remain separate from Backdoor diagnostics. Non-executing checks cover six frontmatter blocks, relative references, unchanged payload hashes, identical runtime instruction bodies and Backdoor's named tool registrations. No application tests, skill execution or external chat calls were run; unchanged source retains the previous dated review.
+
 ## Instruction maintenance baseline — 30 October 2026
 
 The first explicit nightly skill-text inventory found four instruction payloads in the skill library and two additional copies of the runtime skill in Core and the assembled Burrow source. The other documented component/mod repositories contain no `SKILL.md` payloads at the inspected heads. The inventory records file hashes separately from package versions; no application or skill version was bumped for documentation maintenance.
@@ -54,3 +62,4 @@ Instruction files do not carry a complete historical source-version matrix. Thei
 This is a code-grounded operator guide, not a claim that every described operation was exercised against a live installation. Application behavior depends on your installed release. The operating skills were reconciled with the public runtime and current mod implementations on 21 October 2026. Backdoor guidance now covers the system mod’s diagnostics and administrative operations; see the [compatibility note](library.md). Live schemas, permissions, and current application documentation remain authoritative.
 
 The original artwork and skills retain the [Burrow Skills repository license](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/LICENSE). The documentation does not grant additional software or data access.
+

@@ -12,7 +12,7 @@ Bundled and Git-managed instruction text is read-only in the operator editor. Av
 
 ## Current implementation: Core and mod-managed skills
 
-The dedicated managed catalog is implemented in current Core, rechecked **25 October 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
+The dedicated managed catalog is implemented in current Core, rechecked **31 October 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.
@@ -23,9 +23,13 @@ Burrow fetches these declarations from the official public skill repository and 
 
 ### Automatic refresh
 
-Burrow reconciles the desired managed set at startup, after mod lifecycle changes, and periodically. The default refresh interval is six hours; runtime configuration can change it. The implementation fetches the source's default revision. It records the fetched revision and content hash with the installed copy.
+Burrow reconciles the desired managed set at startup, after mod lifecycle changes, and periodically. The default refresh interval is six hours; runtime configuration can change it. The implementation fetches each declaration's repository/path at `HEAD`. Official declarations currently point to the **Public** Burrow-Skills repository, even when the application or mod uses a Development build. Changing the application update channel does not rewrite these declarations. There is no publication push into the running process; the managed synchronizer pulls at its own triggers.
 
-All desired packages are fetched and staged before replacement begins. A fetch or staging failure leaves the existing installed set in place. Do not treat this as a promise of transactional recovery from every possible disk failure during replacement. If refresh fails, inspect the runtime error and installed state instead of assuming the latest instructions arrived.
+The six-hour interval is a process-local background producer, not the optional library's cron schedule. `BURROW_MANAGED_SKILL_SYNC_INTERVAL_MS` can change it, with a minimum of 60 seconds. Background schedulers must be enabled for periodic checks. No agent/model invocation is needed.
+
+Managed copies live under `<workspaceRoot>/global/managed-skills/<id>/`. Each copy records its fetched revision, package content hash and last successful synchronization time in `.burrow-managed-skill.json`. An empty ordinary Skills library is compatible with all managed operating skills being available.
+
+All desired packages are fetched and staged before replacement begins. A fetch or staging failure leaves the existing installed set in place. Do not treat this as a promise of transactional recovery from every possible disk failure during replacement. If refresh fails, inspect the runtime error and installed state instead of assuming the latest instructions arrived. One failed declaration can prevent the whole staged set from publishing. Periodic failures emit `managed_skill_sync_unavailable`; a later successful interval emits `managed_skill_sync_restored`. These events and metadata describe the managed producer separately from mod-source refresh or ordinary library synchronization.
 
 When a mod is no longer loaded, a successful reconciliation removes its no-longer-declared managed copy. That does not delete a separately created user skill with another ID.
 
@@ -39,8 +43,19 @@ These are ownership controls in Burrow, not a claim that a host administrator ca
 
 Managed provisioning makes instructions discoverable. The agent still explicitly loads the relevant skill; neither provisioning nor assignment injects every complete skill into every prompt. The skill does not grant access to tools, credentials, or hosts.
 
+## Versions and freshness
+
+A Mods card can show three different versions: **Installed** is the mod package, **Running** is the active host, and **Managed skill** is the installed instruction's frontmatter `version`. None is a last-checked timestamp. An unchanged skill label alone does not prove unchanged text or a failed update.
+
+Current public promotion stamps the four official skills with the snapshot's plain UTC `YYYY.MM.DD` identity and validates it against `PUBLIC_RELEASE.json`. Development authoring may retain `.N` revisions. This describes promotion source behavior, not proof that a particular public snapshot has been published or pulled into your installation. Older immutable snapshots may still have earlier labels.
+
+For read-only verification, inspect `GET /api/agents/<agentId>/skills` and its **`effectiveSkills`** entries, including `owner.scope: "managed"` and `owner.readOnly: true`. The ordinary assignment ID arrays alone do not describe managed availability. Compare the declared upstream revision with the installed metadata's `revision`, `version`, `contentHash` and `synchronizedAt`. The package hash covers paths, modes and bytes; it is different from the instruction-body hash recorded by `load_skill`.
+
+There is no dedicated managed-skill **Sync now** operator route. Ordinary library sync, mod-source refresh, import and assignment control different mechanisms. Do not import duplicates or toggle/restart a working mod just to force a refresh; diagnose the managed producer and its next ordinary interval instead.
+
 ## Inspect before trusting
 
 Review the [exact public instruction files](library.md) before enabling the integration that supplies them. Revisit changes when skills refresh. An instruction file can be stale or unsuitable for your setup even when it is readable and automatically maintained. Live tool schemas and your permission boundaries remain authoritative.
 
 For your own instructions, continue to [optional text and Git skills](installation.md).
+

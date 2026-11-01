@@ -18,10 +18,10 @@ The [public repository](https://github.com/GoblinKing-Burrow/Burrow-Skills) expo
 - [Explore the library](library.md): runtime guidance, credentials, diagnostics, or remote-host operations.
 - [Add your own skills](installation.md): optional repository import and local text files.
 - [Assign and use it](using-skills.md): make instructions discoverable and verify that they were loaded.
-- [Manage updates](updates.md): manual sync, automatic schedules, and pinned revisions.
+- [Manage optional updates](updates.md): library sync, automatic schedules, and pinned revisions.
 - [Write your own](authoring.md): a small, reviewable skill with clear boundaries.
 - [Troubleshoot](troubleshooting.md): missing skills, import failures, and source conflicts.
 
-Managed-catalog behavior was rechecked on **25 October 2026**. The historical **2026.10.19** runtime and the **current managed-skills implementation** are labeled separately. See [source and coverage](sources.md) for exact revisions and compatibility notes.
+Managed-catalog behavior was rechecked on **31 October 2026**. The historical **2026.10.19** runtime and the **current managed-skills implementation** are labeled separately. See [source and coverage](sources.md) for exact revisions and compatibility notes.
 
-[Public skill library](https://github.com/GoblinKing-Burrow/Burrow-Skills) · [Burrow documentation](https://burrow-docs.blissful-psychosis.com/burrow/)
+[Public skill library](https://github.com/GoblinKing-Burrow/Burrow-Skills) · [Burrow documentation](https://docs.goblin-kingdom.com/burrow/)
