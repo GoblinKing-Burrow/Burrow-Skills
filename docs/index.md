@@ -22,6 +22,6 @@ The [public repository](https://github.com/GoblinKing-Burrow/Burrow-Skills) expo
 - [Write your own](authoring.md): a small, reviewable skill with clear boundaries.
 - [Troubleshoot](troubleshooting.md): missing skills, import failures, and source conflicts.
 
-Managed-catalog behavior was rechecked on **31 October 2026**. The historical **2026.10.19** runtime and the **current managed-skills implementation** are labeled separately. See [source and coverage](sources.md) for exact revisions and compatibility notes.
+Managed-catalog behavior was rechecked on **1 November 2026**. The historical **2026.10.19** runtime and the **current managed-skills implementation** are labeled separately. See [source and coverage](sources.md) for exact revisions and compatibility notes.
 
 [Public skill library](https://github.com/GoblinKing-Burrow/Burrow-Skills) · [Burrow documentation](https://docs.goblin-kingdom.com/burrow/)

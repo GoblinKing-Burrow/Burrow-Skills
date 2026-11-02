@@ -1,6 +1,6 @@
 ---
 name: node-goblin-operations
-version: 2026.11.01
+version: 2026.11.02
 description: "Operate and troubleshoot Node Goblin controller and execution hosts without confusing service health, pairing, connectivity, and execution evidence."
 ---
 
@@ -60,8 +60,8 @@ Before an update:
 1. Drain active work.
 2. Check the outcome of any interrupted operation before retrying it.
 3. Back up protected configuration and persistent state.
-4. Install a selected release package.
-5. Start the service and verify controller connection, trust, assignment, and actual execution.
+4. On the execution host, extract the selected verified release archive and run `sudo sh deploy/update.sh` from its root. This supported update path replaces the installation and explicitly restarts the service; ordinary install followed by `connect` is not an equivalent restart. Run the updater locally or through an independent SSH connection, not through the Node Goblin service it replaces.
+5. Verify the updater outcome, running version, controller connection, trust, assignment, and actual execution. Do not treat a failed update or a disconnected command as proof that the old or new service is running.
 
 A dropped connection does not prove the host operation stopped. Determine its outcome before retrying commands with side effects.
 

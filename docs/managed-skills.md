@@ -12,7 +12,7 @@ Bundled and Git-managed instruction text is read-only in the operator editor. Av
 
 ## Current implementation: Core and mod-managed skills
 
-The dedicated managed catalog is implemented in current Core, rechecked **31 October 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
+The dedicated managed catalog is implemented in current Core, rechecked **1 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.

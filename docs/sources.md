@@ -5,7 +5,15 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
-## Ordinary maintenance — 31 October 2026
+## Full reconciliation — 1 November 2026
+
+All nine guides and six existing instruction payloads were reviewed against current implementation: skill library `1f464f48b651a78c3c90599ffee674a627cf67e3`, Core `8b5889115680bcdbf698f1b93126254e1cf4d2e6`, UI `e6d3fe7b17da1c68d380f1e28482fd9c5819cdef`, assembly `fe851c4e546c9bf9f53f861e24f918474432c296`, Backdoor `b03239d3cae16a5b6f7cfd5174cf7bb88cdff01a`, Node Goblin `120d19f576c4b3c496bc7b91e0e485f7634df73c`, and GSS `a80eef571c775a8b98891684811c669f34881d95`. These pins identify reviewed source, not installed or publicly promoted versions.
+
+Runtime instructions in all three owning copies now cover one-time scheduling and assigned-ToDo task jobs, saved extra instructions, skipped targets and one-time consumption. Node Goblin instructions now use the supported update-and-restart path rather than implying that start/connect restarts an existing daemon. Backdoor and GSS instruction contracts remain current. No frontmatter version was changed. Static checks cover frontmatter, hashes, instruction-body alignment, named tool registrations and reference paths; no skill scripts, application tests or external chat calls were executed.
+
+The full review includes optional Git import/preview and ownership, assignments/lifecycle, source sync/recovery, managed-catalog declaration/refresh/precedence, explicit loading and all companion instruction boundaries. Other documented components contain no additional `SKILL.md` payloads at the reviewed heads.
+
+## Historical ordinary maintenance — 31 October 2026
 
 The six existing instruction payloads retain their previously reviewed bytes: four in the skill library and one bundled runtime copy each in Core and the assembly. No skill metadata/version was changed. Skill-library head `078031793d93118e463c0c780feefa3dd109e257` and Backdoor head `cfc215e7f71594a2f5d6f3d34e165ea37ebce113` are unchanged from the previous documentation receipts.
 
