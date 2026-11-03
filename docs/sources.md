@@ -5,6 +5,18 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 3 November 2026
+
+All six existing instruction payloads were re-read at skill-library `f0f033fcd5b795bdc0a5dc8ec548ef82488e8f0e`, Core `32dde3266a231777ddfec6dba141d6b9972a21fd`, and assembly `400ec8f2d0b24478ca2185bf8c38aee2ede4c445`. Recursive inventories of the ten documented component repositories found no additional payloads. The three runtime copies now clarify the native directory's mod-owned peer eligibility and direct-send rechecks: A2A support and a live owning provider are required. This is a narrow existing-tool correction, not full Menagerie documentation.
+
+Backdoor `af17f0feaaa5174780541b814db0d234255c35db` still registers 35 tools; all 35 reference headings and all 22 skill tool names match. Argument tables, discovery and native A2A separation were rechecked. Core's additional scalar context-measurement fields do not invalidate the existing diagnostic instructions. GSS and Node Goblin payloads remain unchanged after schema and updater checks. Frontmatter and versions are unchanged, runtime instruction bodies match, and source hashes are recorded separately from reviewed hashes. No skill scripts, runtime/provider tests, operational changes or external messages were executed. Unchanged guidance retains its prior dated review.
+
+## Ordinary maintenance — 2 November 2026
+
+The six existing payloads were compared with the 1 November full-review receipts. Backdoor `af17f0feaaa5174780541b814db0d234255c35db` and skill-library `95d930c427316963705f5d6e45c5dc28288bb318` retain those documented implementations. Core `69f644aaf9f0060fac7003c22e77f7a3da7c0471` and assembly `d25beccce60830cf4159d91cae9a97dec38eefd2` add saved-photo Forge selection. The three runtime instruction copies are aligned with own-agent, selected-agent and operator reference selectors, including discovery, compatibility, failure behavior and explicit generation authorization. This replaces the older own-photo-only restriction; no version metadata changed.
+
+All 35 Backdoor registrations and the 22 tool names referenced by its skill remain consistent. Native peer messaging/discovery still do not require Backdoor diagnostics. Non-executing checks cover exact skill hashes, YAML frontmatter, runtime-body alignment and local references. Unchanged components retain the dated full-review evidence below; no skill scripts or application/provider tests were executed.
+
 ## Full reconciliation — 1 November 2026
 
 All nine guides and six existing instruction payloads were reviewed against current implementation: skill library `1f464f48b651a78c3c90599ffee674a627cf67e3`, Core `8b5889115680bcdbf698f1b93126254e1cf4d2e6`, UI `e6d3fe7b17da1c68d380f1e28482fd9c5819cdef`, assembly `fe851c4e546c9bf9f53f861e24f918474432c296`, Backdoor `b03239d3cae16a5b6f7cfd5174cf7bb88cdff01a`, Node Goblin `120d19f576c4b3c496bc7b91e0e485f7634df73c`, and GSS `a80eef571c775a8b98891684811c669f34881d95`. These pins identify reviewed source, not installed or publicly promoted versions.
@@ -70,4 +82,3 @@ Instruction files do not carry a complete historical source-version matrix. Thei
 This is a code-grounded operator guide, not a claim that every described operation was exercised against a live installation. Application behavior depends on your installed release. The operating skills were reconciled with the public runtime and current mod implementations on 21 October 2026. Backdoor guidance now covers the system mod’s diagnostics and administrative operations; see the [compatibility note](library.md). Live schemas, permissions, and current application documentation remain authoritative.
 
 The original artwork and skills retain the [Burrow Skills repository license](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/LICENSE). The documentation does not grant additional software or data access.
-

@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.11.02
+version: 2026.11.03
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
@@ -174,12 +174,14 @@ On releases with Core/mod-managed skills, Core and loaded mods provision their c
 
 Discover models with `forge_catalog`. `forge_create_job` can incur cost and requires an operator generation request. Follow `forge_inspect_job` until terminal, then attach succeeded artifacts with `forge_attach_artifact`. Do not claim unsupported modes or tuning are available.
 
+For saved reference photos, discover `forge_catalog`: it exposes your own `agentReferenceImage`, registered agents with portraits in `agentReferenceImages`, the `operatorReferenceImage`, and each model’s `agentReferenceImage` capability. Inspect a returned `attachmentId` with `attachment_view` when needed. On supported image jobs, use `useAgentReferenceImage: true` for your own photo, `referenceAgentIds` for discovered registered agents, and `useOperatorReferenceImage: true` for the operator photo. Agent selections are deduplicated in first-selection order; the operator photo follows them. Use these selectors only for the operator’s requested generation; never supply image bytes or filesystem paths. Upload alone never starts generation. Missing photos or unsupported models fail without dispatch or silent fallback; follow the installed schema because older runtimes may expose only the own-photo flag.
+
 ## Use other agents without abandoning the task
 
 Another agent may own a domain or be useful for isolated work.
 
 - Use native `agent_send_message` directly for a known peer. `recipientAgentId` accepts a canonical ID (preferred) or a unique full display name, including spaces. Exact IDs take precedence; unknown/ambiguous names fail without sending.
-- When discovery or disambiguation is needed, use native `agents_list` (optional `query`; enabled agents by default, `includeDisabled` when needed). It returns only IDs, names and enabled state, not health or access to peer data. Follow `nextCursor` with unchanged filters for more results; narrow `query`/`limit` if the provider budget omits cards. Do not invent IDs or repeatedly rediscover an already-known unambiguous peer.
+- When discovery or disambiguation is needed, use native `agents_list` (optional `query`; enabled agents by default, `includeDisabled` when needed). It returns only IDs, names and enabled state, not health or access to peer data. On runtimes with mod-owned agents, the directory includes those peers only when they support A2A and their owning provider is live. Direct messages also recheck both mod-owned participants; a known ID does not bypass an unavailable provider or disabled A2A capability. Follow `nextCursor` with unchanged filters for more results; narrow `query`/`limit` if the provider budget omits cards. Do not invent IDs or repeatedly rediscover an already-known unambiguous peer.
 - Ordinary A2A needs no Backdoor skill/provider, MCP catalog dance, health check or session inspection. On older runtimes without `agents_list`, use a known accepted recipient; discover a directory through available tools only when actually necessary.
 - Delegate a clear target, scope, and expected result. Hand off behavior and API contracts without taking over another owner’s design decisions.
 - `spawn_subagent` uses the exact filesystem target schema. Omit model to use the configured default minion model, falling back to parent inheritance when unset. An explicit supported model overrides the default.

@@ -25,11 +25,15 @@ The historical 2026.10.19 runtime already provisions `burrow-runtime` and adopts
 
 ## Native peer messaging is separate from diagnostics
 
-Use native `agent_send_message` directly for a known canonical agent ID or unique full display name, including spaces. Exact IDs take precedence; unknown or ambiguous names fail without sending. If discovery or disambiguation is necessary and your runtime exposes `agents_list`, use that native directory rather than loading Backdoor or inspecting health/sessions. The directory lists IDs, names and enabled state, not access to peer data. It supports optional `query`, `includeDisabled`, `limit` and `cursor`; follow `nextCursor` with unchanged filters. Narrow the query or limit if the provider budget omits cards.
+Use native `agent_send_message` directly for a known canonical agent ID or unique full display name, including spaces. Exact IDs take precedence; unknown or ambiguous names fail without sending. If discovery or disambiguation is necessary and your runtime exposes `agents_list`, use that native directory rather than loading Backdoor or inspecting health/sessions. The directory lists IDs, names and enabled state, not access to peer data. On runtimes with mod-owned agents, those peers appear only when they support A2A and their owning provider is live. Direct sends recheck both mod-owned participants, so a known ID cannot bypass provider unavailability or disabled A2A. It supports optional `query`, `includeDisabled`, `limit` and `cursor`; follow `nextCursor` with unchanged filters. Narrow the query or limit if the provider budget omits cards.
 
 For `agent_message_reply_cycle`, return your result as the final reply in the existing exchange rather than requesting a reciprocal reply from the waiting session. Runtime-owned minion depth also limits nested spawning; do not use a reopened child or invented lineage arguments to bypass a leaf.
 
 Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup. On older runtimes without native discovery, use a known accepted recipient or an available directory only when needed. Follow the installed tool schemas: updated skill instructions do not add tools to older runtimes.
+
+## Saved photos in Forge
+
+The runtime skill now explains saved-photo discovery and selection for supported image generation: your own photo, selected registered agents and the operator photo. Inspect `forge_catalog` and the installed `forge_create_job` schema before using `useAgentReferenceImage`, `referenceAgentIds` or `useOperatorReferenceImage`; older runtimes may expose only the own-photo flag. Uploading a photo does not start generation or authorize it. Unsupported models and missing photos fail without silently reverting to text-only generation.
 
 ## Check compatibility before assignment
 
