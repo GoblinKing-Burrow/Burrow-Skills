@@ -5,6 +5,12 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 4 November 2026
+
+Re-read all six existing instruction payloads at skill-library `0df0b5429d70fb327ca1875d3fb706cefdeab330`, Core `b62c57ef5e831bacebf2214a31c04147471c1267` and assembly `86f41581cf4feccbd2126db38a6b746db6483080`. Backdoor `939a5969c01242eb5bdb5f953213a67cc682abac` retains the same 35 tool names and argument schemas; all reference headings and 22 skill tool names match. Its skill now distinguishes `modManagementAgentIds` and `coreApiAgentIds`, rather than teaching the obsolete shared administrator list. The three runtime copies now explain active A2A automatic final-reply delivery without a duplicate send; native messaging/discovery remains separate from Backdoor.
+
+GSS and Node Goblin instruction payloads remain unchanged. Static checks verify exact Git-blob source bytes, preserved frontmatter/version metadata, matching runtime bodies and no unresolved local instruction references. Existing source inventories contain only the six reviewed payloads. No skill scripts, application tests, provider calls, permission changes or version changes were made. Unchanged guidance retains its previous dated review; this does not verify delivery to an installed runtime.
+
 ## Ordinary maintenance — 3 November 2026
 
 All six existing instruction payloads were re-read at skill-library `f0f033fcd5b795bdc0a5dc8ec548ef82488e8f0e`, Core `32dde3266a231777ddfec6dba141d6b9972a21fd`, and assembly `400ec8f2d0b24478ca2185bf8c38aee2ede4c445`. Recursive inventories of the ten documented component repositories found no additional payloads. The three runtime copies now clarify the native directory's mod-owned peer eligibility and direct-send rechecks: A2A support and a live owning provider are required. This is a narrow existing-tool correction, not full Menagerie documentation.

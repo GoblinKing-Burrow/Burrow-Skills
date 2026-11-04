@@ -1,6 +1,6 @@
 ---
 name: burrow-backdoor
-version: 2026.11.03
+version: 2026.11.04
 description: "Inspect and administer the home Burrow, including full local API requests, through trusted Core-hosted Backdoor tools."
 ---
 
@@ -26,8 +26,8 @@ The tools are registered as mod-authorized. Do not request a separate per-tool M
 
 - Own-scope diagnostics are the default.
 - Global diagnostic access permits broader diagnostics; it does not grant administration.
-- Mod administration requires `mod-management-v1` and an administrative agent assignment.
-- Full Core API access requires the independent `core-api-v1` grant and that same Core-owned `adminAgentIds` assignment. Global diagnostics or mod-management approval alone does not grant full API access.
+- Mod administration requires `mod-management-v1` and membership in Core’s `modManagementAgentIds` list.
+- Full Core API access requires the independent `core-api-v1` grant and membership in Core’s separate `coreApiAgentIds` list. Assignment to one administrative list does not assign you to the other. Global diagnostics or mod-management approval alone does not grant full API access.
 
 An `agentId` argument selects diagnostic data; it does not change who is calling. Use actual discovered IDs and accept access denials rather than changing identity or finding a route around them. Availability is capability, not authorization for unrelated work.
 
