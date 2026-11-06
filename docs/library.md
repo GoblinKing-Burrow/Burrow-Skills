@@ -33,10 +33,18 @@ For `agent_message_reply_cycle`, return your result as the final reply in the ex
 
 Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup. On older runtimes without native discovery, use a known accepted recipient or an available directory only when needed. Follow the installed tool schemas: updated skill instructions do not add tools to older runtimes.
 
+## Recall and shared mod guidance
+
+The runtime skill distinguishes explicit `session_search` evidence from current instructions. Returned `sourceId` and `sourceSessionId` identify the original entry and session for exact expansion. `session_recall_not_ready` means indexing is unfinished, not that history is empty; exact expansion can remain available while neighbor windows are unavailable. Optional semantic ranking can fall back to lexical hits if its provider is unavailable.
+
+Enabled, available mods can supply separately attributed current-turn shared guidance. This does not replace an agent profile or grant tools. Current replay excludes runtime-marked prior turn-support snapshots and supplies fresh support once, while retaining original dispatch evidence. Model-facing profile and context sections use readable record headings; original names and `mod://` provenance remain in receipts, not editable local files. Check installed runtime capabilities; publishing new skill text does not add these implementation features to older releases.
+
 ## Saved photos in Forge
 
 The runtime skill now explains saved-photo discovery and selection for supported image generation: your own photo, selected registered agents and the operator photo. Inspect `forge_catalog` and the installed `forge_create_job` schema before using `useAgentReferenceImage`, `referenceAgentIds` or `useOperatorReferenceImage`; older runtimes may expose only the own-photo flag. Uploading a photo does not start generation or authorize it. Unsupported models and missing photos fail without silently reverting to text-only generation.
 
+
+In current Core, native `forge_create_job` waits for completion and automatically delivers succeeded artifacts as agent messages in the current chat. A successful response does not require another `forge_attach_artifact` call. Older installed schemas may instead return a queued job that requires inspection and attachment. After an interrupted wait, inspect the existing job and its separate delivery status before retrying: generation can continue after the waiter disconnects, and `forge_delivery_failed` does not mean the paid generation failed. Do not generate a second image merely to repair delivery.
 ## Check compatibility before assignment
 
 The Backdoor skill covers the current system mod’s diagnostics, durable mod-administration tools and full local Core API requests, with compatibility guidance for older deployments. Administrative access is separate from global diagnostics. Mod management requires `mod-management-v1` and membership in `modManagementAgentIds`; full API requires its independent `core-api-v1` grant and membership in `coreApiAgentIds`. The two agent assignments are independent, so management approval or assignment alone does not authorize API access. Full API responses are not sanitized diagnostic projections, and generic API requests do not inherit durable lifecycle receipts. Follow the [current Backdoor guide](https://docs.goblin-kingdom.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update.
