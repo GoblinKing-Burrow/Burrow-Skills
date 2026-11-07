@@ -1,6 +1,6 @@
 ---
 name: burrow-backdoor
-version: 2026.11.06
+version: 2026.11.07
 description: "Inspect and administer the home Burrow, including full local API requests, through trusted Core-hosted Backdoor tools."
 ---
 
@@ -54,7 +54,7 @@ Use these tools only for the operator's requested outcome:
 
 - `burrow_mod_management_inventory`: inspect installed/installable mods and configured source summaries.
 - `burrow_refresh_mod_sources`: queue a refresh of already configured sources.
-- `burrow_install_mod` / `burrow_update_mod`: queue installation of a discovered mod, optionally at an available version.
+- `burrow_install_mod` / `burrow_update_mod`: queue installation of a discovered mod. Optional `version` must match the currently inspected source's latest version; it is a guard, not a historical-release selector.
 - `burrow_enable_mod` / `burrow_disable_mod` / `burrow_uninstall_mod`: queue the specified lifecycle action.
 - `burrow_get_mod_operation`: inspect its durable operation record.
 

@@ -5,6 +5,18 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 7 November 2026
+
+The five skill-library payloads and two bundled runtime copies were inspected at skill-library `11ad645e8f893affcb7f500a8db23835b6563ca9`, Core `f0b17efdadc57c856eb3c5cf5272a3fff2268ad1` and assembly `c057b5e4369c9c2758c8a8ead784d59ff2e1a5db`. This ordinary delta uses the 6 November receipt and the 1 November full reconciliation as its historical baselines; it does not claim another full reconciliation.
+
+Runtime instructions now describe Core's receiving-agent A2A inbox routing, including explicit default targets and mirrored replies, and distinguish failed/partial or blocked peer answers from successful completion. The Backdoor skill corrects optional install/update `version`: it must match the inspected source's latest version, not select an arbitrary historical release. Evidence is Core's `agent-chat-tool.mjs`, `mod-distribution.mjs` and the existing Backdoor tool reference.
+
+Backdoor `ca08786012520ee58380c501999d7c75a4dbdc92` retains its tool implementation: all 35 registered names match the reference headings and all 22 named skill references exist. The API-request example and argument contracts remain consistent; native A2A does not require Backdoor. Node Goblin `c8181bf1adcf5f7b445b8a59383f4690cd92c7b7` has documentation-only changes since the full-review pin, and GSS `5777390aa089f45de89c391672b937935733fdca` has no agent-tool implementation changes in that comparison. Their skill instructions remain unchanged.
+
+Menagerie `e04c5e661ef6baf0d5ac787ec4c86255180a7f90` declares the new `menagerie-companion-visits` skill; its existing payload is retained. Managed-skill guidance now includes that declaration and separates an auxiliary synchronization failure from a successfully committed mod transition, based on Core's synchronizer, lifecycle wiring and transition regression fixtures.
+
+Static checks cover preserved frontmatter/version metadata, matching runtime instruction bodies, Backdoor named-tool coverage and the changed Markdown's local references. No skill scripts, application/provider tests, runtime operations, permissions, credentials or agent identities were changed or executed. Publication of these source instructions does not verify refresh in an installed runtime.
+
 ## Ordinary maintenance — 6 November 2026
 
 All six existing instruction payloads were checked at skill-library `9cbda9268ce8afeebf0dc0338b4d69d81656fbf8`, Core `4e5a505c12b236ed394b09a577a2d583b409a69f` and assembly `e8acb74a168970eb5dbfdd463745144976811b19`. The three runtime copies now match native Forge's completion-wait and automatic chat delivery contract, distinguish delivery failure from failed generation, and retain older-runtime compatibility. They also clarify fresh turn-support replay and readable profile/context record headings, with original provenance retained in receipts. Source evidence is `forge-agent-tools.mjs`, `postgres-forge-store.mjs`, `provider-turn-replay.mjs` and `prompt-assembler.mjs`.

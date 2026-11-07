@@ -12,12 +12,13 @@ Bundled and Git-managed instruction text is read-only in the operator editor. Av
 
 ## Current implementation: Core and mod-managed skills
 
-The dedicated managed catalog is implemented in current Core, rechecked **1 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
+The dedicated managed catalog is implemented in current Core, rechecked **7 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.
 - Loaded Burrow Backdoor declares `burrow-backdoor`.
 - Loaded Node Goblin declares `node-goblin-operations`.
+- Loaded Menagerie declares `menagerie-companion-visits` for ordinary agents visiting their assigned resident, not for resident identity or operator instructions.
 
 Burrow fetches these declarations from the official public skill repository and makes their managed copies available in agents' effective catalogs. You do not import and assign separate copies to activate this mechanism. A mod must actually load and declare the companion; merely having an old mod checkout does not establish that support.
 
@@ -30,6 +31,8 @@ The six-hour interval is a process-local background producer, not the optional l
 Managed copies live under `<workspaceRoot>/global/managed-skills/<id>/`. Each copy records its fetched revision, package content hash and last successful synchronization time in `.burrow-managed-skill.json`. An empty ordinary Skills library is compatible with all managed operating skills being available.
 
 All desired packages are fetched and staged before replacement begins. A fetch or staging failure leaves the existing installed set in place. Do not treat this as a promise of transactional recovery from every possible disk failure during replacement. If refresh fails, inspect the runtime error and installed state instead of assuming the latest instructions arrived. One failed declaration can prevent the whole staged set from publishing. Periodic failures emit `managed_skill_sync_unavailable`; a later successful interval emits `managed_skill_sync_restored`. These events and metadata describe the managed producer separately from mod-source refresh or ordinary library synchronization.
+
+A managed-skill synchronization failure after a successful mod transition is reported separately; it does not roll back that transition. Check the actual mod state and synchronization diagnostics independently. Mod activation/publication failures still fail the lifecycle operation. A stale companion instruction can remain until a successful reconciliation.
 
 When a mod is no longer loaded, a successful reconciliation removes its no-longer-declared managed copy. That does not delete a separately created user skill with another ID.
 
