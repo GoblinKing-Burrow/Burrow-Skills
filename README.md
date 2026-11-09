@@ -12,7 +12,7 @@ Public operating skills for Burrow and its integrations, updated independently o
 - `goblin-secret-store/SKILL.md`: safe credential discovery and protected-reference use through Goblin Secret Store.
 - `burrow-backdoor/SKILL.md`: home-Burrow diagnostics, durable mod administration, and explicitly authorized full local Core API requests through Backdoor.
 - `node-goblin-operations/SKILL.md`: pairing, health, updates, recovery, and remote-execution boundaries for Node Goblin.
-- `menagerie-companion-visits/SKILL.md`: natural companion visits for ordinary parent agents, not residents; supplied automatically while Menagerie is loaded.
+- `burrow-menagerie/SKILL.md`: natural companion visits for ordinary parent agents, not residents; supplied automatically while Menagerie is loaded.
 
 ## Install and update
 

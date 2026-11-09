@@ -5,6 +5,26 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 9 November 2026
+
+This Monday delta starts from the 8 November full-review receipt. Inspected library `afd9ce8dc4faaa45d1b3abf1c51b93b3e9e69c96`, Core `a799735c9b0d7fbdeb49dcebfc7acb798356d476`, assembly `20523845840bb4763e0fe137d603a7f54d8c5a9d`, Backdoor `2a457afee7fee6836c9723af01b845a2cd56721c`, and Menagerie `2698696aaa336bb1507bedf275f62a43f891a8e5`. All eight existing instruction payloads were inspected; no instruction or frontmatter/version edits were needed. The three runtime bodies remain identical. Menagerie's repository companion and the expanded library guidance differ in conversational detail but retain compatible native A2A, recipient discovery and tool-authority contracts.
+
+Backdoor source and skill text are unchanged since the full review: 35 tool names and argument tables, 22 named skill references, native A2A separation and the full API request example remain consistent. This delta does not re-certify unchanged runtime behavior. The Menagerie library's updated visit guidance is reflected in the library guide without changing resident identities or operator instructions.
+
+Assembly `scripts/promotion/stage-snapshots.mjs` now includes all five official skills in `PUBLIC_SKILL_IDS`, snapshot paths and version stamping. The public `burrow-menagerie/SKILL.md` contents request still returned 404 during this review; the source fix is not evidence of public publication or installation sync. Managed instructions continue to follow the declared public source. No release, managed refresh or installed-state operation was performed.
+
+Checks cover static instruction structure, source names and relative references. No application tests, skill scripts, provider calls, runtime behavior, permissions, credentials, agent identities or operator-specific instructions were changed or executed. The last full reconciliation remains 8 November.
+
+## Sunday full reconciliation — 8 November 2026
+
+Reviewed all eight existing instruction payloads across eleven documented source repositories: five library skills, two bundled runtime copies, and Menagerie's companion copy. Pins: skill library `b9fe974a5c831b23565c567385a4cad3d1b545c1`, Core `6b682eae6cd0dc6efa79e173b7d819fb219443b3`, assembly `1f77c9d0277585bfe1963ce3ab3d2cdf35f16b9a`, Backdoor `30b183a9e8b38b9cea4cef9c308fa39fe759e941`, Node Goblin `c8181bf1adcf5f7b445b8a59383f4690cd92c7b7`, GSS `6c3175d528fdb0ceb77a4f7a5cb71ac8b5b10945`, and Menagerie `bf8d002f32dc04753b167359b7268a9547151af8`.
+
+The three runtime instruction bodies now describe cross-chat Forge image references and the non-executable/non-schedulable Parked task state. Evidence is Core's `action-proposal.mjs`, `forge-artifact-reference.mjs`, `task-board-store.mjs` and task-execution preflight. Full static reconciliation also covered native A2A discovery/routing/replies, scheduler scope, explicit skill loading, managed ownership and synchronization, continuity, protected bindings and Forge delivery. The nine library guides were reviewed against current import, catalog, synchronizer and operator-UI contracts.
+
+Backdoor retains 35 registered tools; names, argument tables, required fields, discovery, full API request example and native A2A separation agree with current implementation. GSS's three assigned-record tool schemas and caller/version-bound reference consumption, Node Goblin's configure/connect/apply/pair/update/uninstall distinctions, and Menagerie's parent-visit scope and participant-authored tool rules remain consistent with their existing skills. These five non-runtime payloads are unchanged. The public Menagerie skill path still returned 404 at review; development publication is not proof of public promotion or installed delivery.
+
+Checks are non-executing text/structure and source-reference checks, not application tests, skill-script execution or live runtime certification. Skill frontmatter/version metadata, runtime permissions, credentials, agent identities and operator-specific instructions are unchanged. Instruction publication does not establish refresh in any installed runtime.
+
 ## Ordinary maintenance — 7 November 2026
 
 The five skill-library payloads and two bundled runtime copies were inspected at skill-library `11ad645e8f893affcb7f500a8db23835b6563ca9`, Core `f0b17efdadc57c856eb3c5cf5272a3fff2268ad1` and assembly `c057b5e4369c9c2758c8a8ead784d59ff2e1a5db`. This ordinary delta uses the 6 November receipt and the 1 November full reconciliation as its historical baselines; it does not claim another full reconciliation.
@@ -13,7 +33,7 @@ Runtime instructions now describe Core's receiving-agent A2A inbox routing, incl
 
 Backdoor `ca08786012520ee58380c501999d7c75a4dbdc92` retains its tool implementation: all 35 registered names match the reference headings and all 22 named skill references exist. The API-request example and argument contracts remain consistent; native A2A does not require Backdoor. Node Goblin `c8181bf1adcf5f7b445b8a59383f4690cd92c7b7` has documentation-only changes since the full-review pin, and GSS `5777390aa089f45de89c391672b937935733fdca` has no agent-tool implementation changes in that comparison. Their skill instructions remain unchanged.
 
-Menagerie `e04c5e661ef6baf0d5ac787ec4c86255180a7f90` declares the new `menagerie-companion-visits` skill; its existing payload is retained. Managed-skill guidance now includes that declaration and separates an auxiliary synchronization failure from a successfully committed mod transition, based on Core's synchronizer, lifecycle wiring and transition regression fixtures.
+Menagerie `e04c5e661ef6baf0d5ac787ec4c86255180a7f90` declares the new `burrow-menagerie` skill; its existing payload is retained. Managed-skill guidance now includes that declaration and separates an auxiliary synchronization failure from a successfully committed mod transition, based on Core's synchronizer, lifecycle wiring and transition regression fixtures.
 
 Static checks cover preserved frontmatter/version metadata, matching runtime instruction bodies, Backdoor named-tool coverage and the changed Markdown's local references. No skill scripts, application/provider tests, runtime operations, permissions, credentials or agent identities were changed or executed. Publication of these source instructions does not verify refresh in an installed runtime.
 

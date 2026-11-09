@@ -12,13 +12,13 @@ Bundled and Git-managed instruction text is read-only in the operator editor. Av
 
 ## Current implementation: Core and mod-managed skills
 
-The dedicated managed catalog is implemented in current Core, rechecked **7 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
+The dedicated managed catalog is implemented in current Core, rechecked **8 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.
 - Loaded Burrow Backdoor declares `burrow-backdoor`.
 - Loaded Node Goblin declares `node-goblin-operations`.
-- Loaded Menagerie declares `menagerie-companion-visits` for ordinary agents visiting their assigned resident, not for resident identity or operator instructions.
+- Loaded Menagerie declares `burrow-menagerie` for ordinary agents visiting their assigned resident, not for resident identity or operator instructions.
 
 Burrow fetches these declarations from the official public skill repository and makes their managed copies available in agents' effective catalogs. You do not import and assign separate copies to activate this mechanism. A mod must actually load and declare the companion; merely having an old mod checkout does not establish that support.
 
@@ -50,7 +50,7 @@ Managed provisioning makes instructions discoverable. The agent still explicitly
 
 A Mods card can show three different versions: **Installed** is the mod package, **Running** is the active host, and **Managed skill** is the installed instruction's frontmatter `version`. None is a last-checked timestamp. An unchanged skill label alone does not prove unchanged text or a failed update.
 
-Current public promotion stamps the four official skills with the snapshot's plain UTC `YYYY.MM.DD` identity and validates it against `PUBLIC_RELEASE.json`. Development authoring may retain `.N` revisions. This describes promotion source behavior, not proof that a particular public snapshot has been published or pulled into your installation. Older immutable snapshots may still have earlier labels.
+Current public promotion source includes five official skills, including `burrow-menagerie`, and stamps them with the snapshot's plain UTC `YYYY.MM.DD` identity and validates it against `PUBLIC_RELEASE.json`. Development authoring may retain `.N` revisions. This describes promotion source behavior, not proof that a particular public snapshot has been published or pulled into your installation. Older immutable snapshots may still have earlier labels.
 
 For read-only verification, inspect `GET /api/agents/<agentId>/skills` and its **`effectiveSkills`** entries, including `owner.scope: "managed"` and `owner.readOnly: true`. The ordinary assignment ID arrays alone do not describe managed availability. Compare the declared upstream revision with the installed metadata's `revision`, `version`, `contentHash` and `synchronizedAt`. The package hash covers paths, modes and bytes; it is different from the instruction-body hash recorded by `load_skill`.
 

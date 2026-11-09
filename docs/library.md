@@ -19,7 +19,7 @@ The links below open the current public instruction files. Review their Git hist
 
 ### Companion visits in current development
 
-Current development also includes `menagerie-companion-visits/SKILL.md`, declared by loaded Menagerie. It guides ordinary parent agents visiting their assigned resident through native A2A; it does not supply resident identity or operator instructions. The public path was not available at the 7 November review, so this is development-source coverage, not a claim that public promotion or managed installation has completed. Check the installed catalog and the [source receipt](sources.md).
+Current development also includes `burrow-menagerie/SKILL.md`, declared by loaded Menagerie. It guides ordinary parent agents visiting their assigned resident through native A2A; it does not supply resident identity or operator instructions. The public contents path still returned 404 at the 9 November review. Development promotion source now includes this fifth skill, but that source fix is not proof that a public snapshot or managed installation has completed. The current library instruction recommends `messageMode: "request_reply"` while a visit unfolds and reserves `request_reply_complete` for a final exchange; this does not require a fixed number of replies or authorize repeated visits. Check the installed catalog and the [source receipt](sources.md).
 
 ## Start with the integration you actually use
 
@@ -51,6 +51,14 @@ The runtime skill now explains saved-photo discovery and selection for supported
 
 
 In current Core, native `forge_create_job` waits for completion and automatically delivers succeeded artifacts as agent messages in the current chat. A successful response does not require another `forge_attach_artifact` call. Older installed schemas may instead return a queued job that requires inspection and attachment. After an interrupted wait, inspect the existing job and its separate delivery status before retrying: generation can continue after the waiter disconnects, and `forge_delivery_failed` does not mean the paid generation failed. Do not generate a second image merely to repair delivery.
+### Reopen an existing Forge image across chats
+
+Current Core also accepts `[forge:JOB_ID:ARTIFACT_ID]` (or the same literal without brackets) as `attachment_view`'s `attachmentId`. Obtain both UUIDs from the existing job/artifact record. This operator-scoped, read-only lookup opens the original PNG/JPEG/GIF/WebP in another chat without generation or copying it into that chat. Missing/deleted artifacts, unsupported media and images over 20 MiB fail explicitly. Older runtimes may lack this reference format.
+
+### Parked board tasks
+
+Current native task tools accept `status: "parked"`. Parked tasks remain retrievable but cannot execute or be scheduled until moved out of Parked. The runtime instructions distinguish that holding state from active work; a tool being available is not authorization to resume it.
+
 ## Check compatibility before assignment
 
 The Backdoor skill covers the current system mod’s diagnostics, durable mod-administration tools and full local Core API requests, with compatibility guidance for older deployments. Administrative access is separate from global diagnostics. Mod management requires `mod-management-v1` and membership in `modManagementAgentIds`; full API requires its independent `core-api-v1` grant and membership in `coreApiAgentIds`. The two agent assignments are independent, so management approval or assignment alone does not authorize API access. Full API responses are not sanitized diagnostic projections, and generic API requests do not inherit durable lifecycle receipts. Follow the [current Backdoor guide](https://docs.goblin-kingdom.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update. Optional install/update `version` must match the inspected source's latest version; it is a guard against a changed source, not a historical-release selector.

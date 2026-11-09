@@ -2,7 +2,7 @@
 
 This page covers optional user-created or imported library skills. Core and mod-managed skills follow their own [automatic provisioning and ownership](managed-skills.md); do not import duplicates or use these controls to override managed IDs.
 
-Select a skill under **Settings → Skills → Installed skills**. Its **Source** section controls the repository, ref, path, sync schedule, and fetch timeout.
+Select a skill under **Settings → Skills → Installed skills**. Its **Source and updates** section controls the repository, ref, path, sync schedule, and fetch timeout.
 
 ## Update on demand
 
