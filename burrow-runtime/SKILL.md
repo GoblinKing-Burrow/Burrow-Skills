@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.11.09
+version: 2026.11.10
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
