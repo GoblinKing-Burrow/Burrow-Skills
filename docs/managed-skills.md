@@ -20,6 +20,8 @@ The dedicated managed catalog is implemented in current Core, rechecked **8 Nove
 - Loaded Node Goblin declares `node-goblin-operations`.
 - Loaded Menagerie declares `burrow-menagerie` for ordinary agents visiting their assigned resident, not for resident identity or operator instructions.
 
+The current Menagerie declaration uses the canonical `burrow-menagerie` ID and public repository path. The former ID was `menagerie-companion-visits`. The canonical public instruction was verified on **10 November 2026**; that confirms upstream availability, not delivery to your installation. Let successful managed reconciliation follow the declaration rather than creating a manual duplicate or modifying managed files.
+
 Burrow fetches these declarations from the official public skill repository and makes their managed copies available in agents' effective catalogs. You do not import and assign separate copies to activate this mechanism. A mod must actually load and declare the companion; merely having an old mod checkout does not establish that support.
 
 ### Automatic refresh

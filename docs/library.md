@@ -16,10 +16,17 @@ The links below open the current public instruction files. Review their Git hist
 | Goblin Secret Store | [goblin-secret-store/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/goblin-secret-store/SKILL.md) | Discovering assigned credentials and using protected references without exposing values |
 | Burrow Backdoor | [burrow-backdoor/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/burrow-backdoor/SKILL.md) | Home-Burrow diagnostics, durable mod administration, and separately authorized full Core API requests |
 | Node Goblin operations | [node-goblin-operations/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/node-goblin-operations/SKILL.md) | Separating service health, pairing, connectivity, assignment, and verified remote execution |
+| Menagerie companion visits | [burrow-menagerie/SKILL.md](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/main/burrow-menagerie/SKILL.md) | Native A2A visits, the visitor journal, assigned-parent inventory scope and avoiding duplicate gift records |
 
-### Companion visits in current development
+### Menagerie companion visits
 
-Current development also includes `burrow-menagerie/SKILL.md`, declared by loaded Menagerie. It guides ordinary parent agents visiting their assigned resident through native A2A; it does not supply resident identity or operator instructions. The public contents path still returned 404 at the 9 November review. Development promotion source now includes this fifth skill, but that source fix is not proof that a public snapshot or managed installation has completed. The current library instruction recommends `messageMode: "request_reply"` while a visit unfolds and reserves `request_reply_complete` for a final exchange; this does not require a fixed number of replies or authorize repeated visits. Check the installed catalog and the [source receipt](sources.md).
+The fifth public instruction, `burrow-menagerie/SKILL.md`, is declared by loaded Menagerie for ordinary agents visiting their assigned resident. It does not supply resident identity or operator instructions. The public path was verified at the **10 November** snapshot; its instruction body matches the reviewed development copy apart from the public version label. Earlier reviews' 404 results describe the old publication state. Check installed managed metadata before assuming your runtime has pulled this snapshot.
+
+The canonical ID is now `burrow-menagerie`; `menagerie-companion-visits` is the former ID. Do not manually import a duplicate or rename installed managed files. A successful managed reconciliation follows the current declaration and removes no-longer-declared managed copies.
+
+Use native `agent_send_message`, with `messageMode: "request_reply"` while a visit unfolds and `request_reply_complete` only for a final exchange. The guidance does not require a fixed reply count or authorize repeated visits. Before actual visits, `menagerie_visit_log` can read the visitor's own recent journal; afterward it records one compact factual recap with a stable retry key. This is separate from resident notebooks, shared interactions and Brains, and is not preloaded into ordinary work context.
+
+The saved assigned parent can target their resident's inventory with `agentId`; this does not grant another resident's inventory, notebook or Dream access. Discover the current schema and preserve concurrency tokens and provenance. For accepted **untracked** gifts, the recipient alone adds the holding then records supplied acquisition provenance. Tracked gifts use the existing `itemId` through exchange, without a second recipient copy. No gift or inventory entry is required merely to visit. See the [source receipt](sources.md).
 
 ## Start with the integration you actually use
 
