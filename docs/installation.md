@@ -26,6 +26,10 @@ A selection containing only `SKILL.md` uses PostgreSQL. A selection with compani
 
 Import and sync read Git objects and install files. They do **not** execute included scripts or Git hooks. Later use of a script is a separate execution action with its own access and authorization requirements.
 
+## Frontmatter validation
+
+For repository and filesystem skill metadata, current Core uses YAML frontmatter rather than line-by-line guesses. Frontmatter is optional, but an opening `---` must have a closing delimiter and valid mapping content. When present and non-null, `name`, `description` and `version` must be strings. Malformed, unclosed or wrongly typed metadata fails explicitly; correct the source and preview again rather than assuming partial metadata was imported. Older runtimes may parse differently.
+
 ## Create your own text skill
 
 1. Open **New text skill**.

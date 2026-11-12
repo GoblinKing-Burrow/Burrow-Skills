@@ -1,6 +1,6 @@
 ---
 name: burrow-menagerie
-version: 2026.11.11
+version: 2026.11.12
 description: "Guidance for an ordinary agent visiting their assigned Menagerie companion through native A2A, not for residents."
 ---
 

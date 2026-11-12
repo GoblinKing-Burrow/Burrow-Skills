@@ -54,10 +54,18 @@ Enabled, available mods can supply separately attributed current-turn shared gui
 
 ## Saved photos in Forge
 
-The runtime skill now explains saved-photo discovery and selection for supported image generation: your own photo, selected registered agents and the operator photo. Inspect `forge_catalog` and the installed `forge_create_job` schema before using `useAgentReferenceImage`, `referenceAgentIds` or `useOperatorReferenceImage`; older runtimes may expose only the own-photo flag. Uploading a photo does not start generation or authorize it. Unsupported models and missing photos fail without silently reverting to text-only generation.
+The runtime skill now explains saved-photo discovery and selection for supported image or video generation: your own photo, selected registered agents and the operator photo. Inspect `forge_catalog` and the installed `forge_create_job` schema before using `useAgentReferenceImage`, `referenceAgentIds` or `useOperatorReferenceImage`; older runtimes may expose only the own-photo flag. Uploading a photo does not start generation or authorize it. Unsupported models and missing photos fail without silently reverting to text-only generation.
 
 
 In current Core, native `forge_create_job` waits for completion and automatically delivers succeeded artifacts as agent messages in the current chat. A successful response does not require another `forge_attach_artifact` call. Older installed schemas may instead return a queued job that requires inspection and attachment. After an interrupted wait, inspect the existing job and its separate delivery status before retrying: generation can continue after the waiter disconnects, and `forge_delivery_failed` does not mean the paid generation failed. Do not generate a second image merely to repair delivery.
+### GIF, video references and repeat delivery
+
+Current `forge_catalog` advertises model-specific `imageOptions`, including supported output formats, sizes and GIF controls. `forge_create_job` accepts typed image settings only for compatible image models; do not infer GIF support from a model name. GIF defaults are nine frames at 200 ms and auto size. Explicit frame count is 2–16, duration 20–2000 ms rounded to 10 ms, with advertised dimension limits.
+
+Supported native Google video models accept saved portraits and ordered prior Forge image references. Discover the model’s `referenceArtifacts` support, then pass `{jobId, artifactId}` pairs from existing Forge records. Saved portraits come first, followed by these artifacts, with at most six references total. Artifact inputs must be succeeded PNG/JPEG/WebP images up to 20 MiB each; GIF and private mod artifacts are excluded. Missing or invalid sources fail without generation or fallback; arbitrary uploads, URLs and file paths remain unsupported.
+
+Explicit `forge_attach_artifact` is idempotent within one assistant turn. A later authorized turn can resend an existing artifact without regenerating it. Automatic successful generation already delivers its attachments; do not attach them again merely because they appear in the result.
+
 ### Reopen an existing Forge image across chats
 
 Current Core also accepts `[forge:JOB_ID:ARTIFACT_ID]` (or the same literal without brackets) as `attachment_view`'s `attachmentId`. Obtain both UUIDs from the existing job/artifact record. This operator-scoped, read-only lookup opens the original PNG/JPEG/GIF/WebP in another chat without generation or copying it into that chat. Missing/deleted artifacts, unsupported media and images over 20 MiB fail explicitly. Older runtimes may lack this reference format.

@@ -5,6 +5,14 @@ The historical public-release sections were checked on **21 October 2026** again
 - [Burrow Skills at 788d634](https://github.com/GoblinKing-Burrow/Burrow-Skills/tree/788d634f61044f6048b2a8dbcb4613fe8a9d3703): four skill directories and original Tinker and Trixie artwork at `docs/assets/hero.png`.
 - [Burrow at aa5a30d](https://github.com/GoblinKing-Burrow/Burrow/tree/aa5a30da683a3a8ea919025f107ff53f182ef8d6): operator UI, catalog, storage, Git import, synchronization, and explicit loading.
 
+## Ordinary maintenance — 12 November 2026
+
+Reviewed eight existing instruction payloads against Core `f589673df9124a459617f76230e90d021577a067`, assembly `6eaeba62b03b7b5a527512c9df36e92ba7d67faf`, skill library `31470b9f184efbe88dd8ae420d5286a7fd8303c5` and Menagerie `05181a3196c10377f71f84b3c17102fe6edee5d3`. This ordinary delta follows the 11 November receipt; the last full review remains 8 November.
+
+The three runtime instruction copies now explain typed Forge GIF options, supported native Google video references, existing-image artifact selection and turn-scoped explicit resend idempotency. Scheduler guidance follows scoped continuation cursors rather than assuming a first page is complete. The library guide mirrors media behavior; optional-import guidance records current YAML metadata validation. Evidence is Core’s `forge-agent-tools.mjs`, `postgres-forge-store.mjs`, `agent-scheduled-job-tool.mjs`, `skill-frontmatter.mjs`, `git-skill-fetch.mjs` and `skill-catalog.mjs`.
+
+Backdoor `2a457afee7fee6836c9723af01b845a2cd56721c` remains unchanged: its 35 registered names, argument tables and 22 instruction references remain consistent, including discovery, the API example and native A2A separation. Five non-runtime payloads retain their exact bytes. Instruction versions and frontmatter are unchanged. Static source/text checks do not execute skills, call providers or establish an installed runtime’s refresh.
+
 ## Ordinary maintenance — 10 November 2026
 
 Compared the 9 November successful baseline with library `550efc277addd0d872972cbfa4f8a58375a44f48`, Core `60427dd6c41e129d6597ee2f4e9bc08eca13f4e1`, assembly `1a59d735bd3142969830431e55183fd8a5130ae4`, and Menagerie `645827302652eb033d00b84ba4ddef6da270e0b7`. All eight existing instruction payloads were reviewed. The canonical library/mod ID is now `burrow-menagerie`, replacing `menagerie-companion-visits`. Both Menagerie instruction bodies agree with current visitor-journal, assigned-parent inventory and recipient-only untracked gift contracts. No instruction or frontmatter/version edits were needed; the three runtime bodies remain equal after removing library-only version metadata and surrounding whitespace.
