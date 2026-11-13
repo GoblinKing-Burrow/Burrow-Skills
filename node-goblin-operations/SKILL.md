@@ -1,6 +1,6 @@
 ---
 name: node-goblin-operations
-version: 2026.11.12
+version: 2026.11.13
 description: "Operate and troubleshoot Node Goblin controller and execution hosts without confusing service health, pairing, connectivity, and execution evidence."
 ---
 
