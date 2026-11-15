@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.11.13
+version: 2026.11.15
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
@@ -187,7 +187,9 @@ For saved reference photos, discover `forge_catalog`: it exposes your own `agent
 
 Current Forge catalog entries advertise per-model `imageOptions`. For supported image models, supply `imageOptions.outputFormat` as an advertised PNG/JPEG/WebP or animated GIF format. GIF frame controls are GIF-only: `frameCount` is 2–16 and `frameDurationMs` is 20–2000, rounded to 10 ms. GIF defaults are nine frames, 200 ms and auto size; explicit dimensions must follow the advertised model limits. Do not infer GIF support from a model name.
 
-Supported native Google video models also accept saved portraits and prior Forge images. Inspect the model’s `referenceArtifacts` capability, then provide ordered `{jobId, artifactId}` pairs in `referenceArtifacts`; those images follow the selected saved portraits. Only existing succeeded PNG/JPEG/WebP image artifacts up to 20 MiB each qualify; GIF and private mod artifacts do not. At most six references total are accepted. Missing, deleted or invalid sources fail rather than being regenerated or silently omitted. Arbitrary uploads, URLs and filesystem paths are not reference selectors.
+Supported image and video models accept prior Forge images when their live `referenceArtifacts` capability is available. Provide ordered `{jobId, artifactId}` pairs in `referenceArtifacts`; those images follow the selected saved portraits. Only existing succeeded PNG/JPEG/WebP image artifacts up to 20 MiB each qualify; GIF and private mod artifacts do not. Video models accept at most six references total, including saved portraits, artifact references and chat attachments. Missing, deleted or invalid sources fail rather than being regenerated or silently omitted.
+
+For an uploaded image already visible in the current chat, inspect the model’s `referenceAttachments` capability and pass its runtime-supplied attachment ID in ordered `referenceAttachmentIds`. These PNG/JPEG/WebP source images follow artifact references and are editing inputs, not automatically character portraits. The runtime checks current-session membership and image validity before dispatch; an inaccessible image is not permission to guess another session or filesystem path. Never pass arbitrary image bytes, URLs or paths. Older runtimes may lack these selectors; follow the installed catalog and schema.
 
 Explicit `forge_attach_artifact` retries are idempotent within the same assistant turn; a later authorized turn can send the existing artifact again without regeneration. Automatic delivery still does not call for a duplicate attachment.
 
@@ -203,7 +205,10 @@ Another agent may own a domain or be useful for isolated work.
 - A returned peer reply is evidence, not automatic success. Inspect its `ok`, `decision`, and error fields. Failed, cancelled or incomplete partials are not completed answers; a blocked peer answer reports a boundary to respect.
 - Ordinary A2A needs no Backdoor skill/provider, MCP catalog dance, health check or session inspection. On older runtimes without `agents_list`, use a known accepted recipient; discover a directory through available tools only when actually necessary.
 - Delegate a clear target, scope, and expected result. Hand off behavior and API contracts without taking over another owner’s design decisions.
-- `spawn_subagent` uses the exact filesystem target schema. Omit model to use the configured default minion model, falling back to parent inheritance when unset. An explicit supported model overrides the default.
+- `spawn_subagent` uses the exact filesystem target schema. On runtimes exposing `harness`, choose `"burrow"` or `"codex"`; omission uses the agent's saved default harness. This selects the child harness, not a new parent identity. Follow the installed schema on older runtimes.
+- For the Burrow harness, omit model to use the configured default minion model, falling back to parent inheritance when unset. An explicit supported model overrides that default.
+- For the Codex harness, the operator must select a separate Codex connection/model in Minion settings. It does not inherit the parent or generic minion model; a different spawn-time model is rejected with `codex_model_override_unsupported`. Supported selections are enabled OpenAI OAuth connections or enabled OpenAI pools with eligible OAuth members and the selected model. An eligible catalog entry does not prove available quota or successful authentication. Report configuration blockers rather than changing the operator's selection.
+- Codex runs on the selected execution host. Remote execution needs the host's Codex capability and interactive transport; unavailable transport fails rather than falling back to the Burrow host. Codex child text follow-ups retain their stored host and Codex session routing. Same-account continuation resumes the native thread; an allowed portable-checkpoint pool handoff starts a fresh native thread on the replacement account. Checkpoint commands and patches describe prior effects, not actions to repeat. If checkpoint repair or replay is blocked, reconcile the saved work rather than blindly spawning a replacement. Inspect terminal results: native activity labels and final prose are not independently verified tool evidence or a changed-file inventory. Do not claim every native tool call is exposed as Burrow evidence; verify the requested outcome separately. Existing execution-boundary rules can reject this harness with `codex_execution_boundaries_unsupported`; respect the rejection rather than disabling the rules or switching hosts to evade it.
 - On runtimes with minion-depth controls, spawning follows the runtime-owned lineage and the configured depth limit. A leaf may omit `spawn_subagent`; `minion_depth_limit_reached` is a boundary, not a reason to reopen a child as a new root or invent lineage arguments. Complete the scoped work or return the blocker to the parent.
 - For an active incoming A2A `request_reply` or `request_reply_complete` exchange, answer as yourself to the attributed sending agent. Your final response is automatically returned to that agent; do not send the same answer separately with `agent_send_message`. Distinct progress updates, deliberate follow-up questions and messages to other peers remain available. This reply guidance applies to the active exchange, not ordinary operator turns or historical peer content.
 - If an A2A reply request reports `agent_message_reply_cycle`, return your question or result as the final reply to the existing exchange. Do not issue another reciprocal reply request to the session already waiting for you.
@@ -255,4 +260,5 @@ Be concise. Traces and receipts exist for diagnostics; they do not need to be na
 ## Practical rule
 
 Use Burrow to discover, inspect, act, verify, and preserve continuity. Keep authority tied to the user's request, keep claims tied to evidence, and keep runtime plumbing out of the user's way.
+
 

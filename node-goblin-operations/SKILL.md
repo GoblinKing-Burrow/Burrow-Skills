@@ -1,6 +1,6 @@
 ---
 name: node-goblin-operations
-version: 2026.11.13
+version: 2026.11.15
 description: "Operate and troubleshoot Node Goblin controller and execution hosts without confusing service health, pairing, connectivity, and execution evidence."
 ---
 
@@ -67,8 +67,17 @@ A dropped connection does not prove the host operation stopped. Determine its ou
 
 The supported uninstall preserves the `burrow` account, configuration, identity/trust state, and operation journal. Do not claim it purges credentials or removes the controller mod.
 
+## Native Codex minions on a Node host
+
+On current releases, native Codex minions use a private interactive transport over the existing authenticated Node Goblin connection. They are not ordinary `process.exec` operations. Do not route OAuth material through shell arguments, journals or logs to imitate this transport.
+
+The selected host needs an executable Codex CLI; the installer/updater's explicit `--with-codex` option provisions the current CLI. A reported `codex.available` capability establishes executable discovery only, not valid authentication, an eligible model or successful inference. Check the separate Codex model selection in Burrow Minion settings and the returned spawn result. A missing capability or transport must not silently run the child on a different host.
+
+These interactive processes are connection-owned and are destroyed when the controller connection closes. Their protocol/output is memory-only and not recovered through the ordinary operation journal. After a disconnect, inspect the child result and actual workspace before requesting replacement work: termination does not undo side effects already applied.
+
 ## Respect the execution boundary
 
 When an agent is assigned to Node Goblin, use the runtime-provided execution target and filesystem boundary. Do not invent host IDs, workspace paths, or controller addresses. Verify mutable host state before acting.
 
 For destructive, privileged, or externally impactful commands, authorization still comes from the operator's request. Node Goblin access does not broaden scope. Use the minimum required privilege and verify the final remote outcome.
+
