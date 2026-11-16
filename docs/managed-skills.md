@@ -12,7 +12,7 @@ Bundled and Git-managed instruction text is read-only in the operator editor. Av
 
 ## Current implementation: Core and mod-managed skills
 
-The dedicated managed catalog is implemented in current Core, rechecked **8 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
+The dedicated managed catalog is implemented in current Core, rechecked **15 November 2026**. It is absent from the historical runtime revision above; verify installed capabilities rather than interpreting that older snapshot as the current release. See [source pins](sources.md).
 
 - Core declares `burrow-runtime`.
 - Loaded Goblin Secret Store declares `goblin-secret-store`.
@@ -63,4 +63,5 @@ There is no dedicated managed-skill **Sync now** operator route. Ordinary librar
 Review the [exact public instruction files](library.md) before enabling the integration that supplies them. Revisit changes when skills refresh. An instruction file can be stale or unsuitable for your setup even when it is readable and automatically maintained. Live tool schemas and your permission boundaries remain authoritative.
 
 For your own instructions, continue to [optional text and Git skills](installation.md).
+
 

@@ -1,4 +1,6 @@
 # Explore the public skill library
+Repeated autonomous visits now reuse the same owner/resident visit session, including after mod reloads, while each invitation remains its own turn. Older event-specific sessions are retained as history, not merged or deleted. This does not authorize agents to schedule or initiate additional visits.
+
 
 Read the public instruction files before trusting or using them. The runtime skill is provisioned automatically; current Core's managed system also supplies the loaded mods’ declared companions. See [managed skills and release coverage](managed-skills.md).
 
@@ -20,7 +22,7 @@ The links below open the current public instruction files. Review their Git hist
 
 ### Menagerie companion visits
 
-The fifth public instruction, `burrow-menagerie/SKILL.md`, is declared by loaded Menagerie for ordinary agents visiting their assigned resident. It does not supply resident identity or operator instructions. The public path was verified at the **10 November** snapshot; its instruction body matches the reviewed development copy apart from the public version label. Earlier reviews' 404 results describe the old publication state. Check installed managed metadata before assuming your runtime has pulled this snapshot.
+The fifth public instruction, `burrow-menagerie/SKILL.md`, is declared by loaded Menagerie for ordinary agents visiting their assigned resident. It does not supply resident identity or operator instructions. The public path was verified at the **10 November** snapshot; that snapshot matched the then-reviewed development body apart from the public version label. Later instruction updates can await the next public promotion. Earlier reviews' 404 results describe the old publication state. Check installed managed metadata before assuming your runtime has pulled this snapshot.
 
 The canonical ID is now `burrow-menagerie`; `menagerie-companion-visits` is the former ID. Do not manually import a duplicate or rename installed managed files. A successful managed reconciliation follows the current declaration and removes no-longer-declared managed copies.
 
@@ -46,6 +48,12 @@ For `agent_message_reply_cycle`, return your result as the final reply in the ex
 
 Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup. On older runtimes without native discovery, use a known accepted recipient or an available directory only when needed. Follow the installed tool schemas: updated skill instructions do not add tools to older runtimes.
 
+## Native coding minions
+
+Current `spawn_subagent` supports Burrow, Codex and Claude harnesses. Effective global settings apply unless an agent override is enabled; native enable flags are independent of the default harness. Each native harness requires its own eligible OAuth connection/model or supported provider pool, plus its executable and matching transport on the selected host. Burrow uses its effective `burrowModel`, or inherits the actual parent turn model when that pair is null. A configured pair rejects a differing per-call model rather than silently selecting another account.
+
+Normal dispatch needs no profile picker or profile-read prerequisite. Retained compatibility profiles apply only when explicitly requested through a supported legacy field. Native final text and activity labels do not prove file changes or verification; inspect the result and workspace. Missing capability, model, policy or transport fails instead of silently moving work to another host. The runtime and Node Goblin instruction updates describe this boundary without changing executable behavior or operator settings.
+
 ## Recall and shared mod guidance
 
 The runtime skill distinguishes explicit `session_search` evidence from current instructions. Returned `sourceId` and `sourceSessionId` identify the original entry and session for exact expansion. `session_recall_not_ready` means indexing is unfinished, not that history is empty; exact expansion can remain available while neighbor windows are unavailable. Optional semantic ranking can fall back to lexical hits if its provider is unavailable.
@@ -62,7 +70,7 @@ In current Core, native `forge_create_job` waits for completion and automaticall
 
 Current `forge_catalog` advertises model-specific `imageOptions`, including supported output formats, sizes and GIF controls. `forge_create_job` accepts typed image settings only for compatible image models; do not infer GIF support from a model name. GIF defaults are nine frames at 200 ms and auto size. Explicit frame count is 2–16, duration 20–2000 ms rounded to 10 ms, with advertised dimension limits.
 
-Supported native Google video models accept saved portraits and ordered prior Forge image references. Discover the model’s `referenceArtifacts` support, then pass `{jobId, artifactId}` pairs from existing Forge records. Saved portraits come first, followed by these artifacts, with at most six references total. Artifact inputs must be succeeded PNG/JPEG/WebP images up to 20 MiB each; GIF and private mod artifacts are excluded. Missing or invalid sources fail without generation or fallback; arbitrary uploads, URLs and file paths remain unsupported.
+Supported image and video models accept saved portraits and ordered prior Forge image references. Discover the model’s `referenceArtifacts` support, then pass `{jobId, artifactId}` pairs from existing Forge records. Saved portraits come first, followed by these artifacts. Video models accept at most six references total, including current-chat attachment references. Artifact inputs must be succeeded PNG/JPEG/WebP images up to 20 MiB each; GIF and private mod artifacts are excluded. Missing or invalid sources fail without generation or fallback. For a runtime-owned PNG/JPEG/WebP already visible in the current chat, discover `referenceAttachments` support and pass its attachment ID in `referenceAttachmentIds`; these inputs follow artifact references. This is image-editing source selection, not an assumption that every upload is a character portrait. Arbitrary image bytes, URLs and filesystem paths remain unsupported.
 
 Explicit `forge_attach_artifact` is idempotent within one assistant turn. A later authorized turn can resend an existing artifact without regenerating it. Automatic successful generation already delivers its attachments; do not attach them again merely because they appear in the result.
 
@@ -81,3 +89,4 @@ The Backdoor skill covers the current system mod’s diagnostics, durable mod-ad
 Likewise, a tool name in any skill is not proof that your installed version exposes it. Review instructions alongside the version of the application or mod you run. Skills can change independently of those applications.
 
 [Add an optional skill](installation.md) · [Source revisions](sources.md)
+

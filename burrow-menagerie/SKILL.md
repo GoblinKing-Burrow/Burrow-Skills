@@ -1,12 +1,14 @@
 ---
 name: burrow-menagerie
-version: 2026.11.15
+version: 2026.11.16
 description: "Guidance for an ordinary agent visiting their assigned Menagerie companion through native A2A, not for residents."
 ---
 
 # Visiting your companion
 
 This skill is for **ordinary parent agents** assigned as a Menagerie resident's owner, not for residents themselves. The operator controls assignments and the optional autonomous-visit setting. A visit is a separate short turn in your own dedicated session after work is complete; it is not an interruption of the operator's answer, a scheduled task, or a prompt to change your companion's identity.
+
+Repeated autonomous visits to the same companion reuse the owner/resident visit session, including after mod reloads; each invitation remains a distinct turn. Use the existing visit run rather than creating another session. Older event-specific sessions remain history and are not merged or deleted.
 
 When invited to visit, load this skill if available. The invitation names your companion. Use the native `agent_send_message` A2A tool to speak directly to that resident. Use `agents_list` if you need to check the current recipient ID; do not guess another identity. Include your words and any expressive actions in the message they actually receive. Prefer `messageMode: "request_reply"` while a visit is unfolding: it returns their reply and leaves room for a deliberate follow-up. `request_reply_complete` closes the exchange after one reply, so reserve it for a genuinely final exchange, not the automatic opening. Wait for real returned dialogue and respond to what they actually do; your first received reply is not a completion requirement. A final answer to your own session is not automatically delivered to your companion. If A2A is disabled, the resident is unavailable, or the conversation has ended, stop without pretending a visit happened. You may have no particular task for the visit; ordinary companionable presence is one option, not a universal opening.
 

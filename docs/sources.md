@@ -1,4 +1,12 @@
 # Source and coverage
+## Full reconciliation — 15 November 2026
+
+All nine guides and eight existing skill payloads were reviewed against current implementation. Source pins: skill library `dc3586763e828052ade31700691445aa69f6f406`, Core `29ca7b6cec378700503a587703adc1d82e9d6f6d`, assembly `fa4fed7c13c8ce75e45fcdb9884d212dc4e0d18b`, Node Goblin `75d29eddf675e2274c2c8017c7a52fe8cee7ddaf`, Backdoor `2a457afee7fee6836c9723af01b845a2cd56721c`, GSS `18f1a44d60e4ed4f49767a252cab2fb316f3313e`, and Menagerie `6c90da9729a64fb3d53155caccc546e55c78566c`. These identify inspected implementation, not installed or promoted versions.
+
+The three runtime instruction copies now describe Claude alongside Codex, effective global/per-agent minion settings, independent native enablement, model-selection blockers and explicit-only legacy profile selection. Node Goblin instructions distinguish both native transports and executable discovery from successful authentication. Both Menagerie companions explain reuse of the owner/resident visit session. Backdoor and GSS instruction text remains unchanged after their tool/authority review. The library's Forge guidance now includes supported image references and current-session attachment IDs instead of claiming uploads are universally unsupported.
+
+The complete guide review covers optional import, YAML metadata, assignments/lifecycle, catalog precedence, managed staging/refresh/failure recovery and explicit loading. Backdoor's 35 registered schemas and all named instruction references were compared with source, including native A2A discovery versus diagnostics and full API versus durable lifecycle receipts. Static frontmatter, body-equality, reference and hash checks do not execute skills or establish installed delivery. No application tests, live chat/provider calls, executable skill changes or version bumps were performed.
+
 
 The historical public-release sections were checked on **21 October 2026** against:
 
@@ -150,3 +158,4 @@ Instruction files do not carry a complete historical source-version matrix. Thei
 This is a code-grounded operator guide, not a claim that every described operation was exercised against a live installation. Application behavior depends on your installed release. The operating skills were reconciled with the public runtime and current mod implementations on 21 October 2026. Backdoor guidance now covers the system mod’s diagnostics and administrative operations; see the [compatibility note](library.md). Live schemas, permissions, and current application documentation remain authoritative.
 
 The original artwork and skills retain the [Burrow Skills repository license](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/LICENSE). The documentation does not grant additional software or data access.
+
