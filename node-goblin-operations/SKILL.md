@@ -1,6 +1,6 @@
 ---
 name: node-goblin-operations
-version: 2026.11.17
+version: 2026.11.18
 description: "Operate and troubleshoot Node Goblin controller and execution hosts without confusing service health, pairing, connectivity, and execution evidence."
 ---
 
@@ -67,11 +67,13 @@ A dropped connection does not prove the host operation stopped. Determine its ou
 
 The supported uninstall preserves the `burrow` account, configuration, identity/trust state, and operation journal. Do not claim it purges credentials or removes the controller mod.
 
-## Native Codex and Claude minions on a Node host
+## Native Codex, Claude and Gemini minions on a Node host
 
-On current releases, native Codex and Claude minions use private interactive transports over the existing authenticated Node Goblin connection. They are not ordinary `process.exec` operations. Do not route OAuth material through shell arguments, journals or logs to imitate this transport.
+On current releases, native Codex, Claude and Gemini minions use private interactive transports over the existing authenticated Node Goblin connection. They are not ordinary `process.exec` operations. Do not route OAuth material through shell arguments, journals or logs to imitate this transport.
 
-The selected host needs an executable Codex CLI; the installer/updater's explicit `--with-codex` option provisions the current CLI. Claude requires a compatible installed `claude` executable; the separate explicit `--with-claude` installer option provisions it. Codex provisioning alone does not install Claude. A reported `codex.available` or `claude.available` capability establishes executable discovery only, not valid authentication, an eligible model or successful inference. Check the matching native enable flag and connection/model in effective Burrow Minion settings, including global inheritance or the agent override, and the returned spawn result. A missing capability or transport must not silently run the child on a different host.
+The selected host needs an executable Codex CLI; the installer/updater's explicit `--with-codex` option provisions the current CLI. Claude requires a compatible installed `claude` executable; the separate explicit `--with-claude` installer option provisions it. Gemini requires a compatible `gemini` executable, provisioned by the separate explicit `--with-gemini` installer option. Provisioning one CLI does not install the other harnesses. A reported `codex.available`, `claude.available` or `gemini.available` capability establishes executable discovery only, not valid authentication, an eligible model or successful inference. Check the matching native enable flag and connection/model in effective Burrow Minion settings, including global inheritance or the agent override, and the returned spawn result. A missing capability or transport must not silently run the child on a different host.
+
+Gemini uses its own eligible direct Google API-key connection and exact enabled model, not OAuth, Vertex, a provider pool or the parent model. It is an explicit harness choice, not a default-harness option. Its saved native session can resume only on the same host, target, connection and exact model after cleanup is confirmed; it has no portable pool handoff. Upgrading Core alone does not add the matching transport to an older Node Goblin gateway.
 
 These interactive processes are connection-owned and are destroyed when the controller connection closes. Their protocol/output is memory-only and not recovered through the ordinary operation journal. After a disconnect, inspect the child result and actual workspace before requesting replacement work: termination does not undo side effects already applied.
 
@@ -80,4 +82,5 @@ These interactive processes are connection-owned and are destroyed when the cont
 When an agent is assigned to Node Goblin, use the runtime-provided execution target and filesystem boundary. Do not invent host IDs, workspace paths, or controller addresses. Verify mutable host state before acting.
 
 For destructive, privileged, or externally impactful commands, authorization still comes from the operator's request. Node Goblin access does not broaden scope. Use the minimum required privilege and verify the final remote outcome.
+
 

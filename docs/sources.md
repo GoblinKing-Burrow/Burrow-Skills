@@ -1,4 +1,10 @@
 # Source and coverage
+## Ordinary maintenance — 17 November 2026
+
+Compared the eight existing instruction payloads and relevant implementation changes against the 15 November full-review baseline. Runtime and Node Goblin instructions now cover explicit Gemini dispatch, separate direct Google API-key eligibility, matching remote transport, saved-session resume limits and policy blockers. The library guide also reflects unlocked model fallback versus **Lock model** enforcement. This is an ordinary static delta review, not a new full reconciliation or installed-runtime refresh.
+
+Backdoor remains at implementation pin `2a457afee7fee6836c9723af01b845a2cd56721c`: its 35 registered tools and the skill's 22 named diagnostic/administrative references retain the reviewed schema contract. Native A2A still does not require Backdoor. GSS and both Menagerie instruction copies required no additional text correction. Existing frontmatter and versions are preserved; no executable skill scripts or application/provider tests were run.
+
 ## Full reconciliation — 15 November 2026
 
 All nine guides and eight existing skill payloads were reviewed against current implementation. Source pins: skill library `dc3586763e828052ade31700691445aa69f6f406`, Core `29ca7b6cec378700503a587703adc1d82e9d6f6d`, assembly `fa4fed7c13c8ce75e45fcdb9884d212dc4e0d18b`, Node Goblin `75d29eddf675e2274c2c8017c7a52fe8cee7ddaf`, Backdoor `2a457afee7fee6836c9723af01b845a2cd56721c`, GSS `18f1a44d60e4ed4f49767a252cab2fb316f3313e`, and Menagerie `6c90da9729a64fb3d53155caccc546e55c78566c`. These identify inspected implementation, not installed or promoted versions.
@@ -158,4 +164,5 @@ Instruction files do not carry a complete historical source-version matrix. Thei
 This is a code-grounded operator guide, not a claim that every described operation was exercised against a live installation. Application behavior depends on your installed release. The operating skills were reconciled with the public runtime and current mod implementations on 21 October 2026. Backdoor guidance now covers the system mod’s diagnostics and administrative operations; see the [compatibility note](library.md). Live schemas, permissions, and current application documentation remain authoritative.
 
 The original artwork and skills retain the [Burrow Skills repository license](https://github.com/GoblinKing-Burrow/Burrow-Skills/blob/788d634f61044f6048b2a8dbcb4613fe8a9d3703/LICENSE). The documentation does not grant additional software or data access.
+
 

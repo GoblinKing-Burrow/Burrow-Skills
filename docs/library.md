@@ -50,7 +50,9 @@ Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup
 
 ## Native coding minions
 
-Current `spawn_subagent` supports Burrow, Codex and Claude harnesses. Effective global settings apply unless an agent override is enabled; native enable flags are independent of the default harness. Each native harness requires its own eligible OAuth connection/model or supported provider pool, plus its executable and matching transport on the selected host. Burrow uses its effective `burrowModel`, or inherits the actual parent turn model when that pair is null. A configured pair rejects a differing per-call model rather than silently selecting another account.
+Current `spawn_subagent` supports Burrow, Codex, Claude and explicitly requested Gemini harnesses. Effective global settings apply unless an agent override is enabled; native enable flags are independent of the default harness. Gemini is not a default-harness choice. Codex and Claude use their own eligible OAuth connection/model or supported provider pool; Gemini uses an enabled direct Google Generative Language API-key connection and exact enabled model, not OAuth, Vertex or pools. Each native harness also needs its executable and matching transport on the selected host. Burrow uses its effective `burrowModel`, or inherits the actual parent turn model when that pair is null.
+
+Where **Lock model** is available, an unlocked configured pair is a fallback: an explicit eligible model may be selected on that same connection/pool without changing settings. A locked mismatch fails with `*_model_locked`; an unavailable model does not silently fall back. Older releases can still reject overrides as unsupported. Gemini follow-ups retain their saved native session, host, filesystem target, connection and exact model; they do not use portable pool handoff. A running or unreconciled session must be reconciled before retrying. Native coding approval mode is not an OS sandbox, and inspect-only policy or unsupported hard boundaries can reject dispatch.
 
 Normal dispatch needs no profile picker or profile-read prerequisite. Retained compatibility profiles apply only when explicitly requested through a supported legacy field. Native final text and activity labels do not prove file changes or verification; inspect the result and workspace. Missing capability, model, policy or transport fails instead of silently moving work to another host. The runtime and Node Goblin instruction updates describe this boundary without changing executable behavior or operator settings.
 
@@ -89,4 +91,5 @@ The Backdoor skill covers the current system mod’s diagnostics, durable mod-ad
 Likewise, a tool name in any skill is not proof that your installed version exposes it. Review instructions alongside the version of the application or mod you run. Skills can change independently of those applications.
 
 [Add an optional skill](installation.md) · [Source revisions](sources.md)
+
 
