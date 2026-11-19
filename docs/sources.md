@@ -1,4 +1,12 @@
 # Source and coverage
+## Ordinary maintenance — 18 November 2026
+
+Reviewed the eight existing skill payloads against library `0a5305aff455291f54224710ca3cdcd8c26f90c3`, Core `706b9d4de5d540bdf2233027915421e0a9511eb0`, assembly `d2ce0ae1e48674abaaf413f975a758b7805b2a7b` and Backdoor `8e79fe2109369423ad42e62e2668c69224702693`. The library Runtime already explains selected-chat project context, task-owned project context and authorized lookup of an unselected project. The two bundled Runtime copies are aligned with that guidance and the public scheduler argument `taskId`, rather than its internal normalized name `scheduledTaskId`.
+
+Backdoor now registers 36 tools; all 23 named skill references resolve to registered tools. Its existing provider-request instructions match the new caller-scoped diagnostic: physical request IDs, optional redacted body selection, distinct capture states and three-day body retention. The GSS library already includes a concrete protected-binding shell example; the guide now explains its boundary. Menagerie variants retain equivalent continuity and inventory contracts despite presentation differences.
+
+Evidence includes Core `prompt-assembler.mjs`, `task-execution.mjs`, `task-board-tool-executor.mjs`, `action-proposal.mjs`, `native-tool-executor.mjs`, `provider-request-inspection.mjs` and `scripts/ui/task-board-routes.mjs`, plus Backdoor `src/mod.mjs`. This is an ordinary static delta review; the last full review remains 15 November. No skill scripts, application or agent-task tests, provider calls, installed refresh, version changes or operator-rule changes were performed.
+
 ## Ordinary maintenance — 17 November 2026
 
 Compared the eight existing instruction payloads and relevant implementation changes against the 15 November full-review baseline. Runtime and Node Goblin instructions now cover explicit Gemini dispatch, separate direct Google API-key eligibility, matching remote transport, saved-session resume limits and policy blockers. The library guide also reflects unlocked model fallback versus **Lock model** enforcement. This is an ordinary static delta review, not a new full reconciliation or installed-runtime refresh.

@@ -1,6 +1,6 @@
 ---
 name: burrow-backdoor
-version: 2026.11.18
+version: 2026.11.19
 description: "Inspect and administer the home Burrow, including full local API requests, through trusted Core-hosted Backdoor tools."
 ---
 
@@ -47,6 +47,16 @@ For an agent/session problem:
 Follow pagination only where the discovered schema supports it. For cursor-based tools, retain the same scope and follow the returned cursor; management inventory instead uses `offset` and `pagination.nextOffset`. Session listing is bounded by `limit` and is not a cursor traversal.
 
 Active-run listings, elapsed time, and counters are observations, not proof of progress. Empty results, denied access, unavailable diagnostics, unsupported tools, and provider errors are distinct states. Sanitized Forge, Brains, and mod summaries do not expose the content Core deliberately omits.
+
+### Compare redacted provider requests from a retained run
+
+On compatible Core and Backdoor versions, discover `burrow_get_provider_requests`. This uses the named diagnostic scope described above, not the separate full Core API grant. No SSH is needed. The operator can also find it under **Archive → Proof → Redacted provider requests** for the selected run.
+
+1. Identify the run, agent, and session from the trace. Call `burrow_get_provider_requests` with `{"runId":"<run-id>","agentId":"<agent-id>","sessionId":"<session-id>"}`. The list returns physical request IDs in recorded order, including continuations, with metadata and capture states but no prompt bodies.
+2. Use trace timing and request metadata (`modelCall`, `continuation`) to identify the requests immediately before and after the tool reply. Add `"requestId":"<physical-request-id>"` to the same arguments and call once for each request. A physical request ID is not the logical model-call number.
+3. Compare only the relevant redacted `request.body` content; for example, check whether a tool result or a specific guidance block appears in the second request. Summarize the difference instead of republishing prompts.
+
+Bodies are retained for up to three days; earlier whole-trace removal can also make them inaccessible. A body is returned only for `available`; `expired` indicates aging out, `not_captured` indicates it was never captured, and `unavailable` means the body cannot currently be retrieved. A missing run, a scope denial, or unsupported older Core/Backdoor versions are not evidence that a particular capture expired.
 
 ## Complete authorized mod operations
 

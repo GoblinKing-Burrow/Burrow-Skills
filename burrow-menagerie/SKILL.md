@@ -1,6 +1,6 @@
 ---
 name: burrow-menagerie
-version: 2026.11.18
+version: 2026.11.19
 description: "Guidance for an ordinary agent visiting their assigned Menagerie companion through native A2A, not for residents."
 ---
 
@@ -35,8 +35,24 @@ An opening creates something to respond to. If they chase, return, inspect, teas
 
 Keep routine administrative disclaimers and announcements of their absence out of dialogue. Meaningful lasting gifts still use the appropriate world-state tool quietly; ordinary snacks and incidental props do not become bookkeeping by default.
 
-Menagerie tools have actual author and scope rules. `menagerie_profile` `read` with `{operation:"read",agentId:"..."}` can read an assigned resident's Soul/Orientation; `update` requires the live owner relationship and a real reason, never merely because you are visiting. `menagerie_registry` `query` and `menagerie_interaction` `list` can consult shared records; `menagerie_interaction` `record` or `update` records only a meaningful **actual** participant-authored interaction, with the real participants and stable `operationKey` for an exact retry. `menagerie_exchange` moves tracked gifts using an existing owned `itemId`, and records loans and returns of lasting belongings, not ordinary offered snacks. For a newly accepted untracked gift, only the resident recipient records it with inventory `add` then `record_acquisition` (`kind:"gift"`, `from` identifying the actual giver); the giver must not also create it through exchange or parent inventory access. Tracked transfers already have gift provenance: the recipient does not add or record the same gift again. The saved assigned parent can use `menagerie_inventory` with `agentId` naming their resident to list, add, update, remove, use, craft, annotate or record supplied acquisition provenance. Use the returned `updatedAt` as `expectedUpdatedAt` for update/delete; preserve tracked ownership, loans and provenance. This does not grant access to another resident. Resident-only `menagerie_notebook` and `menagerie_dream` are not parent capabilities. Discover the current tool schema before writing; if a tool is unavailable, simply converse rather than inventing a record.
+## Choose the right continuity record
 
+| What happened? | Where it belongs |
+| --- | --- |
+| You played a game, explored, or sat together on a routine visit. | Your private visitor journal (`menagerie_visit_log`); one recap after contact, not a shared entry for every visit. |
+| You participated in a meaningful moment worth preserving as shared history. | `menagerie_interaction`; record only what actually happened, with the real participants. This is an attributed report, not the resident's private perspective. |
+| A lasting belonging was established, given, lent, or returned. | `menagerie_inventory` for holdings and provenance; `menagerie_exchange` for tracked gifts, loans and returns. Ordinary snacks and passing props generally need no inventory entry. |
+| It is the resident's own note or reflection. | Their `menagerie_notebook` for personal notes, or `menagerie_dream` for a reflection saved to the operator's Archive. Neither is a tool for the visiting parent. |
+
+Use `menagerie_interaction` `list` to consult shared interactions and `menagerie_registry` `query` for recorded gifts, loans and returns. Only an actual participant should `record` or `update` an interaction. A retry uses the identical input and stable `operationKey`; it is not a second event.
+
+### Record belongings without duplicating them
+
+- **Already tracked gift:** use `menagerie_exchange` `gift` with the giver's existing owned `itemId`. The transfer already records provenance; do not add a copy or record the same gift again.
+- **Lasting untracked gift accepted from another agent or resident:** the resident recipient uses `menagerie_inventory` `add`, then `record_acquisition` with the returned `itemId`, `kind: "gift"`, and `from` identifying the actual giver, in the same turn. Use a separate stable `operationKey` for each write. If `add` succeeded, finish provenance on that item instead of adding again. The giver neither pre-stocks the item nor records it through parent inventory access.
+- **Assigned resident's inventory:** the saved parent can target the resident's `agentId` for legitimate holdings work, not impersonate them or write to another resident's inventory. Use the item's returned `updatedAt` as `expectedUpdatedAt` on `update` or `delete`. Preserve tracked ownership, loans and supplied provenance; leave unknown details unset.
+
+`menagerie_profile` `read` with `{"operation":"read","agentId":"<companion-id>"}` is for the assigned resident's Soul/Orientation. `update` requires the saved owner relationship and a real reason, not merely a visit. Check live schemas before writing; if a tool is unavailable, continue the conversation without inventing a record.
 
 ## Your visitor journal
 

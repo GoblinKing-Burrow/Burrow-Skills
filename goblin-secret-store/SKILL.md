@@ -1,6 +1,6 @@
 ---
 name: goblin-secret-store
-version: 2026.11.18
+version: 2026.11.19
 description: "Safely discover and use credentials assigned through Goblin Secret Store without exposing protected values."
 ---
 
@@ -23,6 +23,20 @@ Use the normal sequence:
 5. Pass the returned `protected://` reference through the receiving tool's protected-binding mechanism.
 
 Never place a protected reference or secret value directly in command text, source, logs, chat, memory, documentation, or a tool argument that does not explicitly support protected bindings.
+
+### Example: hand off a token without exposing it
+
+For an authorized GitHub read, confirm the assigned record is for GitHub and the token is needed. Call `gss_use` with `{"id":"<discovered-record-id>","field":"token"}`. Then call `shell_exec` with these arguments, substituting the returned reference **only** in `protectedBindings`:
+
+```json
+{
+  "command": "gh api repos/OWNER/REPO --jq .full_name",
+  "protectedBindings": {"GH_TOKEN": "protected://<returned-reference>"},
+  "reason": "Verify the intended GitHub repository"
+}
+```
+
+Replace `OWNER/REPO` with the verified target. Burrow injects the value into that process as `GH_TOKEN`; `gh` reads it from the environment. Do not echo it or persist it with a credential login command. This example shows the reference format only; use the actual tool result, not the placeholder.
 
 ## Respect the access boundary
 

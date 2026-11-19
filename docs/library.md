@@ -48,6 +48,16 @@ For `agent_message_reply_cycle`, return your result as the final reply in the ex
 
 Ordinary A2A does not require a Backdoor skill/provider or an MCP catalog lookup. On older runtimes without native discovery, use a known accepted recipient or an available directory only when needed. Follow the installed tool schemas: updated skill instructions do not add tools to older runtimes.
 
+## Resolve a Task Board project
+
+Selecting a chat project supplies its current description, notes and annotated paths under **Conversation active project**. Task Board Execute and scheduled task runs instead carry the task's own project context without changing the chat selection. `tasks_list` returns task records with `projectId`, not the project's notes or paths.
+
+For an unselected project, authorized Backdoor full Core API access can read `burrow_api_request` with `{"method":"GET","path":"/api/task-board/projects"}`. Match the exact project ID or an unambiguous name in `body.projects`, then use its `description`, `notes` and `pathEntries`. This does not require a UI selection or invent a native project-read tool. If access is unavailable, use other authorized references or ask only for missing material information. Project context does not select a host, authorize changes, set a working directory or prove a path exists. Verify the path on the selected host. Native task-backed schedules use `jobKind: "task"` and public argument `taskId`.
+
+## Use a protected credential in a command
+
+The GSS skill includes a concrete `gss_use` → `shell_exec` example: obtain the protected reference for an assigned record's token, then supply that actual returned reference through `protectedBindings`, for example `{"GH_TOKEN":"protected://<returned-reference>"}`, while running the authorized `gh api` command. The placeholder is not a usable credential. Do not print the token, place it in command arguments or persist a CLI login merely to use it. Follow the current tool schema, record assignment and selected-host support; the example does not grant broader credential access.
+
 ## Native coding minions
 
 Current `spawn_subagent` supports Burrow, Codex, Claude and explicitly requested Gemini harnesses. Effective global settings apply unless an agent override is enabled; native enable flags are independent of the default harness. Gemini is not a default-harness choice. Codex and Claude use their own eligible OAuth connection/model or supported provider pool; Gemini uses an enabled direct Google Generative Language API-key connection and exact enabled model, not OAuth, Vertex or pools. Each native harness also needs its executable and matching transport on the selected host. Burrow uses its effective `burrowModel`, or inherits the actual parent turn model when that pair is null.
@@ -87,6 +97,12 @@ Current native task tools accept `status: "parked"`. Parked tasks remain retriev
 ## Check compatibility before assignment
 
 The Backdoor skill covers the current system mod’s diagnostics, durable mod-administration tools and full local Core API requests, with compatibility guidance for older deployments. Administrative access is separate from global diagnostics. Mod management requires `mod-management-v1` and membership in `modManagementAgentIds`; full API requires its independent `core-api-v1` grant and membership in `coreApiAgentIds`. The two agent assignments are independent, so management approval or assignment alone does not authorize API access. Full API responses are not sanitized diagnostic projections, and generic API requests do not inherit durable lifecycle receipts. Follow the [current Backdoor guide](https://docs.goblin-kingdom.com/burrow-backdoor/) for setup and discover your installed tool schemas before acting. A queued lifecycle receipt is not a completed installation or update. Optional install/update `version` must match the inspected source's latest version; it is a guard against a changed source, not a historical-release selector.
+
+### Inspect a saved provider request
+
+Where supported, discover `burrow_get_provider_requests` and list a run using `runId` plus applicable `agentId`/`sessionId` scope. The list returns physical request IDs in recorded order, continuation metadata and capture states, not request bodies. Add the selected `requestId` to inspect its redacted body. A physical request ID is not a logical model-call number. Operator access is also available through Archive → Proof → Redacted provider requests.
+
+This uses existing caller-scoped diagnostics, not the separate full Core API grant. Bodies are retained for up to three days, and earlier removal of the whole trace can remove them sooner. Distinguish `available`, `expired`, `not_captured` and `unavailable`; a missing run, scope denial or unsupported feature is not evidence of expiration. Inspect the relevant redacted `request.body` rather than inferring what was sent from the visible conversation alone.
 
 Likewise, a tool name in any skill is not proof that your installed version exposes it. Review instructions alongside the version of the application or mod you run. Skills can change independently of those applications.
 
