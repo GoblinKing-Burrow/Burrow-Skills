@@ -1,4 +1,12 @@
 # Source and coverage
+## Ordinary maintenance — 19 November 2026
+
+Reviewed all eight existing skill payloads against library `f0cfb02aeaa7aca2941811b788f1a30ba448950e`, Core `79bab77973a24f57c717a71cdd3d575e7367eca0`, assembly `c2885ba0ea513c62744e2d42454e021c26227dad` and Backdoor `6430a77d5fe3f02699a59dfde5cf26dafd874f3b`. No instruction changes were needed: the bundled Runtime project-context and public `taskId` corrections from the previous review are present. No native minion harness schema change appears in this delta.
+
+Backdoor's unchanged implementation still registers 36 tools, and all 23 named skill references match. The static check covered provider-request arguments, lifecycle IDs/version guard, the full API argument/discovery example and the explicit separation of native A2A from diagnostics. This does not certify a running installation.
+
+The troubleshooting guide now distinguishes content drift from an invalid or missing filesystem package path. Core derives Git package paths from the current package root, skill ID and installed content hash rather than following historical absolute pointers after relocation; unsafe or missing directories can also report `skill_local_changes`. Evidence is `src/skill-package-path.mjs`, `src/skill-git-sync.mjs` and `src/postgres-skill-settings-store.mjs`. This remains an ordinary static delta review, not a new full reconciliation. No application or agent-task tests, executable skills, live provider/chat calls, managed refresh, version changes or operator-rule changes were performed; the last full review remains 15 November.
+
 ## Ordinary maintenance — 18 November 2026
 
 Reviewed the eight existing skill payloads against library `0a5305aff455291f54224710ca3cdcd8c26f90c3`, Core `706b9d4de5d540bdf2233027915421e0a9511eb0`, assembly `d2ce0ae1e48674abaaf413f975a758b7805b2a7b` and Backdoor `8e79fe2109369423ad42e62e2668c69224702693`. The library Runtime already explains selected-chat project context, task-owned project context and authorized lookup of an unselected project. The two bundled Runtime copies are aligned with that guidance and the public scheduler argument `taskId`, rather than its internal normalized name `scheduledTaskId`.

@@ -44,7 +44,9 @@ A recorded sync failure retains the previous installed content. Check repository
 
 ## Sync reports local changes
 
-`skill_local_changes` means the installed Git-managed content no longer matches its recorded hash. Preserve any intentional local edits, investigate how the published files changed, and reconcile the source deliberately. Do not delete or overwrite files blindly to make the error disappear.
+`skill_local_changes` can mean the installed Git-managed content differs from its recorded hash, or the expected filesystem package directory is invalid, missing or a symlink. Preserve intentional edits and inspect the reported package before reconciling the source. Do not delete or overwrite files blindly to make the error disappear.
+
+After a portable move or restore, current Core resolves Git filesystem packages from the current package root, skill ID and installed content hash, rather than trusting a historical absolute installation path. Use the current catalog-provided location; do not follow the old pointer or assume a successful database restore proves companion files are present. Verify the expected package was restored before retrying synchronization.
 
 ## Instructions are read-only, or Remove source is disabled
 
