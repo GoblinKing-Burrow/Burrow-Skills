@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.11.24
+version: 2026.11.26
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
@@ -109,6 +109,8 @@ On current schemas, `scheduled_jobs_list` and `scheduled_job_runs` return `nextC
 
 `Run now` returns after dispatch. When asked to run or rerun a job, inspect its recent runs until the requested run reaches a terminal result; dispatch alone is not completion. Before creating a recurring monitor, verify it can actually retrieve the information it is supposed to report.
 
+When available, `tasks_wait_for_workflow` saves one exact GitHub run, attempt and commit checkpoint on an existing assigned task. Follow the installed schema and finish the turn after registration. Use `tasks_list_workflow_waits` to recover the retained checkpoint and execution receipt. A GitHub conclusion or resumed wait does not verify an external outcome.
+
 ## Use MCP for connected systems
 
 MCP catalogs expose external integrations and registered mod-provided tools. Their catalogs can be large, so discover what you need instead of assuming a tool exists.
@@ -197,7 +199,7 @@ For saved reference photos, discover `forge_catalog`: it exposes your own `agent
 
 Current Forge catalog entries advertise per-model `imageOptions`. For supported image models, supply `imageOptions.outputFormat` as an advertised PNG/JPEG/WebP or animated GIF format. GIF frame controls are GIF-only: `frameCount` is 2–16 and `frameDurationMs` is 20–2000, rounded to 10 ms. GIF defaults are nine frames, 200 ms and auto size; explicit dimensions must follow the advertised model limits. Do not infer GIF support from a model name.
 
-Supported image and video models accept prior Forge images when their live `referenceArtifacts` capability is available. Provide ordered `{jobId, artifactId}` pairs in `referenceArtifacts`; those images follow the selected saved portraits. Only existing succeeded PNG/JPEG/WebP image artifacts up to 20 MiB each qualify; GIF and private mod artifacts do not. Video models accept at most six references total, including saved portraits, artifact references and chat attachments. Missing, deleted or invalid sources fail rather than being regenerated or silently omitted.
+Supported image and video models accept prior Forge images when their live `referenceArtifacts` capability is available. Provide ordered `{jobId, artifactId}` pairs in `referenceArtifacts`; those images follow the selected saved portraits. Only existing succeeded PNG/JPEG/WebP image artifacts up to 20 MiB each qualify; GIF and private mod artifacts do not. For video, check the selected model’s reference `maxImages` and advertised `videoOptions` workflows in `forge_catalog`. Count saved portraits, Forge images and chat attachments together. When offered, starting-frame animation takes one image and inherits its aspect ratio; omit `aspectRatio`. For subject references, use the workflow’s advertised count and options, up to six where supported. Missing, deleted or invalid sources fail rather than being regenerated or silently omitted.
 
 For an uploaded image already visible in the current chat, inspect the model’s `referenceAttachments` capability and pass its runtime-supplied attachment ID in ordered `referenceAttachmentIds`. These PNG/JPEG/WebP source images follow artifact references and are editing inputs, not automatically character portraits. The runtime checks current-session membership and image validity before dispatch; an inaccessible image is not permission to guess another session or filesystem path. Never pass arbitrary image bytes, URLs or paths. Older runtimes may lack these selectors; follow the installed catalog and schema.
 
