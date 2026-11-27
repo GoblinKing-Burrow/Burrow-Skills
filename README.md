@@ -13,6 +13,7 @@ Public operating skills for Burrow and its integrations, updated independently o
 - `burrow-backdoor/SKILL.md`: home-Burrow diagnostics, durable mod administration, and explicitly authorized full local Core API requests through Backdoor.
 - `node-goblin-operations/SKILL.md`: pairing, health, updates, recovery, and remote-execution boundaries for Node Goblin.
 - `burrow-menagerie/SKILL.md`: natural companion visits for ordinary parent agents, not residents; supplied automatically while Menagerie is loaded.
+- `burrow-auditor/SKILL.md`: independently audit pinned targets, report requested audits, and follow through on internal checks; supplied automatically while Auditor is loaded.
 
 ## Install and update
 
