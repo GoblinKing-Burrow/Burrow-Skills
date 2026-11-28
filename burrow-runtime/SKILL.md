@@ -1,6 +1,6 @@
 ---
 name: burrow-runtime
-version: 2026.11.27
+version: 2026.11.28
 description: "How an agent should use Burrow: conversation, workspace context, tools, MCP, memory, delegation, verification, and secure execution."
 ---
 
@@ -110,6 +110,8 @@ On current schemas, `scheduled_jobs_list` and `scheduled_job_runs` return `nextC
 `Run now` returns after dispatch. When asked to run or rerun a job, inspect its recent runs until the requested run reaches a terminal result; dispatch alone is not completion. Before creating a recurring monitor, verify it can actually retrieve the information it is supposed to report.
 
 When available, `tasks_wait_for_workflow` saves one exact GitHub run, attempt and commit checkpoint on an existing assigned task. Follow the installed schema and finish the turn after registration. Use `tasks_list_workflow_waits` to recover the retained checkpoint and execution receipt. A GitHub conclusion or resumed wait does not verify an external outcome.
+
+For already-authorized work in a private operator chat that does not belong on a task, use `workflow_wait` for one exact GitHub repository, displayed workflow name, run ID, attempt and head SHA. Public Burrow 2026.11.27 supports this via signed workflow completion; follow the installed schema and receiver requirements. For a mod that returns a passive `waitReceiptId` in this run, call `mod_wait` by itself with that value as `id` (not the mod record ID). In both cases save a credential-free checkpoint with scope, progress, remaining work and the proof to check. Yield after registration. Only the final outcome or real blocker returns to the original chat; a terminal tool or GitHub result is evidence, not proof the requested outcome happened. Use `workflow_wait_status` for an exact receipt when diagnosing, not as a poll.
 
 ## Use MCP for connected systems
 

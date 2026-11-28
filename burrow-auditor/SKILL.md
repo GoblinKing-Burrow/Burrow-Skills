@@ -1,6 +1,6 @@
 ---
 name: burrow-auditor
-version: 2026.11.27
+version: 2026.11.28
 description: "Use Burrow Auditor for independent inspections: report requested audits and use internal acceptance audits to finish the work."
 ---
 
